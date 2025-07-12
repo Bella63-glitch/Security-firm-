@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Casteel Security - Your Trusted Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Orbitron:wght@600&amp;family=Urbanist:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* --- Variables and Global Styles --- */
+        :root {
+            --black: #080808; /* Deeper black */
+            --green: #00ff88;
+            --silver: #e0e0e0; /* Brighter silver */
+            --dark-gray: #151515; /* Slightly lighter dark gray for subtle contrast */
+            --card-bg: rgba(18, 18, 18, 0.85); /* Slightly transparent for depth */
+            --card-border: rgba(0, 255, 136, 0.3); /* Softer green border */
+            --card-shadow-light: rgba(0, 255, 136, 0.05);
+            --card-shadow-hover: rgba(0, 255, 136, 0.25); /* Stronger on hover */
+            --gradient-border: linear-gradient(90deg, rgba(0, 255, 136, 0.5) 0%, rgba(0, 255, 136, 0) 100%);
+            --red-accent: #e60000;
+            --red-shadow: rgba(230, 0, 0, 0.5);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--black);
+            font-family: 'Urbanist', sans-serif;
+            color: var(--silver);
+            overflow-x: hidden;
+            background-image: url('https://i.postimg.cc/kGDnm6w8/black-macro-background-paper-texture-271293-1649.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* --- Header (minimal for standalone page if needed) --- */
+        header {
+            display: flex;
+            justify-content: center; /* Center content for About Us page */
+            align-items: center;
+            padding: 18px 40px;
+            position: sticky; /* Sticky header for internal scrolling */
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.25);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            color: var(--green);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+        header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        header h1 a:hover {
+            color: var(--silver);
+        }
+        header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-border);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease-out;
+        }
+        header h1:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -1px;
+            opacity: 0; /* For animation */
+            transform: translateY(40px); /* For animation */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* For animation */
+        }
+        .section:nth-of-type(even) {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .section.animate {
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .section h3 {
+            text-align: center;
+            font-size: 38px;
+            color: var(--green);
+            margin-bottom: 60px;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--green);
+            border-radius: 2px;
+        }
+
+        /* --- Content Blocks Styling --- */
+        .content-block {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px var(--card-shadow-light);
+            transition: all 0.4s ease;
+        }
+        .content-block:hover {
+            box-shadow: 0 12px 35px var(--card-shadow-hover);
+            border-color: var(--green);
+        }
+        .content-block p {
+            color: #d0d0d0;
+            line-height: 1.8;
+            font-size: 17px;
+            text-align: center; /* Centered for larger screens */
+            margin-bottom: 25px;
+        }
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+        .content-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0 0;
+            text-align: left; /* List items left-aligned */
+        }
+        .content-block ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--silver);
+            font-size: 16px;
+        }
+        .content-block ul li::before {
+            content: '✓'; /* Checkmark icon */
+            color: var(--green);
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            font-weight: bold;
+            top: -2px;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+        }
+
+        /* --- Call to Action Button --- */
+        .cta-button {
+            display: inline-block;
+            background: var(--green);
+            color: var(--black);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+            transition: 0.3s ease, transform 0.2s;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        .cta-button:hover {
+            background: #00cc6d;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.9), 0 0 60px rgba(0, 255, 136, 0.4);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #050505;
+            color: #777;
+            font-size: 13px;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 80px 30px;
+            }
+            .content-block {
+                padding: 35px;
+            }
+            .content-block p {
+                font-size: 16px;
+            }
+            .cta-button {
+                padding: 13px 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 20px;
+            }
+            .section h3 {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+            .content-block {
+                padding: 30px;
+            }
+            .content-block p {
+                font-size: 15px;
+                text-align: left; /* Revert to left align for smaller screens for better flow */
+            }
+            .content-block ul {
+                margin-top: 20px;
+            }
+            .content-block ul li {
+                font-size: 14px;
+            }
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 15px;
+                margin-top: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 40px 15px;
+            }
+            .section h3 {
+                font-size: 26px;
+                margin-bottom: 30px;
+            }
+            .content-block {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            .content-block p {
+                font-size: 14px;
+            }
+            .content-block ul li {
+                font-size: 13px;
+            }
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            footer {
+                padding: 25px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">Casteel Security</a></h1> </header>
+
+    <main>
+        <section class="section" id="about-us-intro">
+            <h3>About Casteel Security</h3>
+            <div class="content-block">
+                <p>
+                    **Casteel Security (CS)** stands as one of Kenya's most professionally managed organizations, expertly operating a wide range of security and facility services with efficiency. We are deeply **committed to providing exceptional services** by delivering personalized, high-quality, and cost-efficient solutions designed to meet the precise needs of our clients.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="our-workforce">
+            <h3>Our Workforce &amp; Operations</h3>
+            <div class="content-block">
+                <p>
+                    Our core strength lies in a **strong workforce of well-trained security personnel**, who tirelessly render services around the clock towards the common objective of **protecting assets, property, and life**. This dedication ensures our clients receive reliable security coverage at all times.
+                </p>
+                <p>
+                    CS provides **smartly uniformed, highly trained, and well-supervised guards** for the security and safety of assets, personnel, and property. Our comprehensive guarding services encompass the provision of security personnel for **static posts** and rigorous **mobile/night patrolling** across all types of premises.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="industry-position">
+            <h3>Our Unique Industry Position</h3>
+            <div class="content-block">
+                <p>
+                    Casteel Security holds a unique position in the industry, a reflection of our **responsive attitude and consistently high standards of service**. These standards are firmly rooted in our strong and fundamental pillars of operation, ensuring we not only meet but exceed client expectations in the dynamic security landscape of Kenya.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="our-mission">
+            <h3>Our Mission</h3>
+            <div class="content-block">
+                <p style="font-size: 1.2em; font-weight: 600; color: var(--green);">
+                    "To **provide assistance to people, authorities, and companies** in order to meet their demands for safety and security solutions."
+                </p>
+                <p>
+                    This mission drives every aspect of our operations, from strategic planning to on-the-ground execution, ensuring that we deliver peace of mind through robust and reliable security measures across Kenya.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="call-to-action">
+            <h3>Ready for Enhanced Security?</h3>
+            <div class="content-block" style="text-align: center;">
+                <p>
+                    Whether you need comprehensive static guarding, executive protection, or strategic security consulting, Casteel Security is your trusted partner. Contact us today to discuss your security needs and discover how our tailored solutions can provide you with unparalleled safety and peace of mind.
+                </p>
+                <a href="#contact-info" class="cta-button">Get a Personalized Security Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Casteel Security. All Rights Reserved. Powered by Dedication &amp; Vigilance.
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Adjust threshold to trigger earlier or later
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for the fade-in-up animation
+        document.querySelectorAll('main .section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+
+</body></html>
