@@ -1,1119 +1,1416 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Casteel Security | Tactical Protection Redefined</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Orbitron:wght@600&amp;family=Urbanist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
-  /* --- Variables and Global Styles --- */
-  :root {
-    --black: #080808; /* Deeper black */
-    --green: #00ff88;
-    --silver: #e0e0e0; /* Brighter silver */
-    --dark-gray: #151515; /* Slightly lighter dark gray for subtle contrast */
-    --card-bg: rgba(18, 18, 18, 0.85); /* Slightly transparent for depth */
-    --card-border: rgba(0, 255, 136, 0.3); /* Softer green border */
-    --card-shadow-light: rgba(0, 255, 136, 0.05);
-    --card-shadow-hover: rgba(0, 255, 136, 0.25); /* Stronger on hover */
-    --gradient-border: linear-gradient(90deg, rgba(0, 255, 136, 0.5) 0%, rgba(0, 255, 136, 0) 100%);
-    --red-accent: #e60000; /* New: Muted, strong red for alerts/emphasis */
-    --red-shadow: rgba(230, 0, 0, 0.5); /* New: Red shadow for glow effect */
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-background-color: var(--black);
-font-family: 'Urbanist', sans-serif;
-color: var(--silver);
-overflow-x: hidden;
-background-image: url('https://i.postimg.cc/kGDnm6w8/black-macro-background-paper-texture-271293-1649.jpg');
-background-size: cover;
-background-attachment: fixed;
-background-position: center center;
-position: relative;
-line-height: 1.6;
-}
-
-/* --- Header --- */
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 18px 40px;
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 999;
-background-color: rgba(0, 0, 0, 0.75);
-backdrop-filter: blur(12px); /* Slightly stronger blur */
-border-bottom: 1px solid rgba(0, 255, 136, 0.25); /* Slightly more prominent border */
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-header h1 {
-font-family: 'Orbitron', sans-serif;
-font-size: 26px; /* Slightly larger */
-color: var(--green);
-letter-spacing: 1.5px;
-opacity: 0;
-animation: fadeIn 1s ease-out forwards;
-position: relative;
-}
-header h1::after {
-content: '';
-position: absolute;
-bottom: -5px;
-left: 0;
-width: 100%;
-height: 2px;
-background: var(--gradient-border);
-transform: scaleX(0);
-transform-origin: left;
-transition: transform 0.4s ease-out;
-}
-header h1:hover::after {
-transform: scaleX(1);
-}
-
-nav a {
-color: var(--silver);
-text-decoration: none;
-margin-left: 25px; /* More spacing */
-font-weight: 600;
-transition: color 0.3s, transform 0.2s;
-opacity: 0;
-animation: fadeIn 1s ease-out forwards;
-font-size: 16px; /* Slightly larger nav links */
-position: relative;
-}
-nav a:nth-child(1) { animation-delay: 0.2s; }
-nav a:nth-child(2) { animation-delay: 0.4s; }
-nav a:nth-child(3) { animation-delay: 0.6s; }
-nav a:nth-child(4) { animation-delay: 0.8s; }
-nav a:nth-child(5) { animation-delay: 1.0s; }
-nav a:nth-child(6) { animation-delay: 1.2s; }
-
-nav a::after {
-content: '';
-position: absolute;
-bottom: -5px;
-left: 0;
-width: 100%;
-height: 2px;
-background: var(--green);
-transform: scaleX(0);
-transform-origin: center;
-transition: transform 0.3s ease-out;
-}
-nav a:hover::after {
-transform: scaleX(1);
-}
-
-nav a:hover {
-color: var(--green);
-transform: translateY(-2px);
-}
-
-/* --- Hero Section --- */
-.hero {
-height: 100vh;
-background: url('https://i.postimg.cc/Z5Kw7CMq/9837e9c940ddf87c06ac2e1ff748ffe5.jpg') center/120% no-repeat;
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-overflow: hidden; /* For particle effect */
-}
-
-.hero::after {
-content: '';
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-background: rgba(0,0,0,0.88); /* Stronger overlay */
-}
-
-.hero-content {
-position: relative;
-text-align: center;
-z-index: 10;
-animation: fadeInUp 2s ease-in-out;
-padding: 0 20px;
-}
-
-.hero-content h2 {
-font-size: 48px; /* Larger, more impactful */
-font-family: 'Archivo Black', sans-serif;
-color: var(--silver);
-text-shadow:
--2px -2px 0 #000,
-2px -2px 0 #000,
--2px 2px 0 #000,
-2px 2px 0 #000,
-0 0 15px rgba(0, 255, 136, 0.4); /* Added green glow */
-letter-spacing: 4px; /* More prominent */
-margin-bottom: 20px;
-}
-
-.hero-content p {
-font-size: 18px; /* Larger for readability */
-color: #b0b0b0; /* Slightly darker than silver */
-max-width: 650px; /* Wider text */
-margin-left: auto;
-margin-right: auto;
-text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-/* --- Animations --- */
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(40px); }
-to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-@keyframes scaleIn {
-from { opacity: 0; transform: scale(0.9); }
-to { opacity: 1; transform: scale(1); }
-}
-@keyframes glowPulse {
-0% { box-shadow: 0 0 10px var(--card-shadow-light); }
-50% { box-shadow: 0 0 25px var(--card-shadow-hover); }
-100% { box-shadow: 0 0 10px var(--card-shadow-light); }
-}
-
-/* --- Sections --- */
-.section {
-padding: 100px 40px; /* More generous padding */
-position: relative;
-overflow: hidden;
-background-color: rgba(0, 0, 0, 0.7); /* Subtle overlay for content sections */
-margin-top: -1px; /* Overlap with previous section border */
-}
-.section:nth-of-type(even) {
-background-color: rgba(0, 0, 0, 0.8); /* Alternating background for visual break */
-}
-
-.section h3 {
-text-align: center;
-font-size: 38px; /* Larger, more impactful section titles */
-color: var(--green);
-margin-bottom: 60px; /* More space */
-font-family: 'Orbitron', sans-serif;
-text-transform: uppercase;
-letter-spacing: 2px;
-position: relative;
-padding-bottom: 15px;
-animation: fadeInUp 1.5s ease-in-out;
-}
-.section h3::after {
-content: '';
-position: absolute;
-bottom: 0;
-left: 50%;
-transform: translateX(-50%);
-width: 80px; /* Shorter line */
-height: 3px;
-background: var(--green);
-border-radius: 2px;
-}
-
-/* --- Cards (Services) --- */
-.cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger cards */
-gap: 35px; /* More gap */
-}
-
-.card {
-background: var(--card-bg);
-border: 1px solid var(--card-border);
-padding: 35px 25px; /* More padding */
-border-radius: 20px; /* Larger radius */
-backdrop-filter: blur(12px); /* Stronger blur */
-box-shadow: 0 0 15px var(--card-shadow-light);
-text-align: center;
-transition: all 0.4s ease;
-opacity: 0;
-transform: translateY(40px);
-position: relative;
-overflow: hidden;
-}
-
-.card::before { /* Subtle diagonal border */
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 200%;
-height: 200%;
-background: linear-gradient(45deg, transparent 48%, var(--green) 50%, transparent 52%);
-background-size: 200% 200%;
-transform: rotate(0deg);
-opacity: 0;
-transition: opacity 0.5s ease, transform 0.5s ease;
-z-index: 0;
-}
-
-.card:hover::before {
-opacity: 0.05; /* Very subtle glow */
-transform: rotate(15deg);
-}
-
-.card.animate {
-animation: fadeInUp 1s ease-out forwards;
-}
-
-.card:hover {
-transform: translateY(-10px) scale(1.02); /* More pronounced hover */
-box-shadow: 0 12px 35px var(--card-shadow-hover);
-border-color: var(--green);
-z-index: 1; /* Bring to front on hover */
-}
-
-.icon-wrapper {
-background-color: rgba(0, 255, 136, 0.15); /* Stronger tint */
-border-radius: 50%;
-width: 90px; /* Larger */
-height: 90px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 0 auto 25px auto;
-transition: background-color 0.3s ease, transform 0.3s ease;
-border: 1px solid rgba(0, 255, 136, 0.2);
-}
-
-.card:hover .icon-wrapper {
-background-color: rgba(0, 255, 136, 0.3);
-transform: scale(1.05); /* Slight scale on icon wrapper */
-}
-
-.card img {
-width: 55px; /* Larger icons */
-height: 55px;
-}
-
-.card h4 {
-margin-bottom: 12px; /* More margin */
-color: var(--green);
-font-size: 20px; /* Larger font */
-font-family: 'Orbitron', sans-serif;
-letter-spacing: 0.5px;
-}
-
-.card p {
-color: #c5c5c5; /* Slightly brighter */
-font-size: 15px; /* Slightly larger */
-line-height: 1.7;
-}
-
-/* --- About Section --- */
-.about {
-text-align: center;
-max-width: 900px; /* Wider text for better flow */
-margin: auto;
-color: #d0d0d0;
-font-size: 17px; /* Larger font */
-line-height: 1.8;
-opacity: 0;
-transform: translateY(40px);
-padding: 0 20px; /* Ensure padding on smaller screens */
-}
-
-.about.animate {
-animation: fadeInUp 1.5s ease-in-out forwards;
-}
-
-.about-button-container { /* New: For the button in About Us */
-margin-top: 40px; /* Space between text and button */
-text-align: center;
-}
-
-.about-button-container .cta-button { /* Reusing cta-button style */
-background: var(--green);
-color: var(--black);
-padding: 14px 35px;
-border-radius: 30px;
-text-decoration: none;
-font-weight: 700;
-font-size: 16px;
-box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-transition: 0.3s ease, transform 0.2s;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-display: inline-block; /* To allow padding/margin */
-}
-
-.about-button-container .cta-button:hover {
-background: #00cc6d;
-box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
-transform: translateY(-3px);
-}
-
-/* --- Stats Grid --- */
-.stats-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly larger stats */
-gap: 30px; /* More gap */
-margin-top: 70px; /* More margin */
-text-align: center;
-}
-
-.stat-item {
-background: rgba(255, 255, 255, 0.04); /* More subtle background */
-border: 1px solid rgba(0, 255, 136, 0.2); /* Softer border */
-padding: 25px; /* More padding */
-border-radius: 15px; /* Larger radius */
-backdrop-filter: blur(10px);
-box-shadow: 0 0 20px rgba(0, 255, 136, 0.08); /* More prominent shadow */
-opacity: 0;
-transform: scale(0.9); /* More pronounced initial scale */
-transition: all 0.4s ease;
-position: relative;
-overflow: hidden;
-}
-.stat-item::before { /* Animated border glow */
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-border-radius: 15px;
-background: var(--gradient-border);
-filter: blur(10px);
-opacity: 0;
-transition: opacity 0.5s ease;
-z-index: 0;
-}
-.stat-item:hover::before {
-opacity: 0.2;
-}
-
-.stat-item.animate {
-animation: scaleIn 1s ease-out forwards;
-}
-
-.stat-item h5 {
-font-family: 'Orbitron', sans-serif;
-font-size: 42px; /* Larger, more impressive */
-color: var(--green);
-margin-bottom: 10px;
-text-shadow: 0 0 12px rgba(0, 255, 136, 0.6); /* Stronger glow */
-position: relative; /* For z-index over glow */
-z-index: 1;
-}
-
-.stat-item p {
-font-size: 15px; /* Slightly larger */
-color: var(--silver);
-position: relative; /* For z-index over glow */
-z-index: 1;
-}
-
-/* --- Testimonials Slider --- */
-.testimonials-slider {
-max-width: 850px; /* Wider slider */
-margin: 80px auto 0 auto;
-position: relative;
-overflow: hidden;
-border-radius: 20px; /* Larger radius */
-background: rgba(255, 255, 255, 0.035); /* Slightly more prominent background */
-border: 1px solid rgba(0, 255, 136, 0.25);
-box-shadow: 0 0 25px rgba(0, 255, 136, 0.1);
-height: 220px; /* Adjusted height */
-opacity: 0;
-transform: translateY(40px);
-padding: 0 20px; /* Ensure padding on smaller screens */
-display: flex; /* Use flex for content centering */
-align-items: center;
-}
-
-.testimonials-slider.animate {
-animation: fadeInUp 1.5s ease-in-out forwards;
-}
-
-.testimonial-slide {
-padding: 35px; /* More padding */
-text-align: center;
-transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-opacity: 0;
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-
-.testimonial-slide.active {
-opacity: 1;
-position: relative;
-}
-
-.testimonial-slide p {
-font-size: 17px; /* Larger font */
-font-style: italic;
-color: #d5d5d5;
-margin-bottom: 20px;
-line-height: 1.6;
-}
-
-.testimonial-slide .author {
-font-weight: 700; /* Bolder */
-color: var(--green);
-font-size: 15px;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-.slider-dots {
-text-align: center;
-margin-top: 25px; /* More margin */
-}
-
-.dot {
-display: inline-block;
-height: 10px; /* Larger dots */
-width: 10px;
-background-color: rgba(255, 255, 255, 0.2); /* Softer */
-border-radius: 50%;
-margin: 0 6px; /* More margin */
-cursor: pointer;
-transition: background-color 0.3s, transform 0.2s;
-border: 1px solid transparent;
-}
-
-.dot.active {
-background-color: var(--green);
-transform: scale(1.2); /* Scale up active dot */
-border-color: rgba(0, 255, 136, 0.5);
-}
-.dot:hover {
-transform: scale(1.1);
-}
-
-/* --- Feature Grid (Core Values & Why Choose Us) --- */
-.feature-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Consistent with services cards */
-gap: 35px; /* Consistent gap */
-margin-top: 50px;
-}
-
-.feature-item {
-background: var(--card-bg);
-border: 1px solid var(--card-border);
-padding: 30px; /* Consistent padding */
-border-radius: 20px; /* Consistent radius */
-backdrop-filter: blur(12px);
-box-shadow: 0 0 15px var(--card-shadow-light);
-text-align: center;
-opacity: 0;
-transform: translateY(40px);
-transition: all 0.4s ease;
-}
-
-.feature-item.animate {
-animation: fadeInUp 1s ease-out forwards;
-}
-
-.feature-item:hover {
-transform: translateY(-8px) scale(1.01);
-box-shadow: 0 8px 25px var(--card-shadow-hover);
-border-color: var(--green);
-}
-
-.feature-item h4 {
-color: var(--green);
-font-size: 22px; /* Larger heading */
-margin-bottom: 15px;
-font-family: 'Orbitron', sans-serif;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-.feature-item p {
-color: #c5c5c5;
-font-size: 15px;
-line-height: 1.7;
-}
-
-.feature-item ul {
-list-style: none;
-padding: 0;
-text-align: left;
-margin-top: 20px;
-}
-
-.feature-item ul li {
-color: #d0d0d0;
-font-size: 15px;
-margin-bottom: 10px; /* More margin */
-position: relative;
-padding-left: 28px; /* More padding */
-}
-
-.feature-item ul li::before {
-content: '✔'; /* More prominent checkmark */
-color: var(--green);
-position: absolute;
-left: 0;
-font-size: 18px; /* Larger checkmark */
-font-weight: bold;
-top: -2px; /* Adjust vertical alignment */
-text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
-}
-
-/* --- Section button container --- */
-.section-button-container {
-margin-top: 60px; /* Spacing below grid/content */
-text-align: center;
-}
-
-.section-button-container .cta-button { /* Reusing cta-button style */
-background: var(--green);
-color: var(--black);
-padding: 14px 35px;
-border-radius: 30px;
-text-decoration: none;
-font-weight: 700;
-font-size: 16px;
-box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-transition: 0.3s ease, transform 0.2s;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-display: inline-block;
-}
-
-.section-button-container .cta-button:hover {
-background: #00cc6d;
-box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
-transform: translateY(-3px);
-}
-
-/* --- CTA / Contact --- */
-.cta {
-text-align: center;
-margin-top: 60px;
-padding: 0 20px;
-}
-
-.cta p {
-margin-bottom: 18px; /* More space */
-font-size: 17px;
-color: #d0d0d0;
-max-width: 700px;
-margin-left: auto;
-margin-right: auto;
-}
-
-/* Styles for the contact numbers - NO RED ACCENT */
-.cta .contact-detail {
-font-size: 20px;
-font-weight: bold;
-color: var(--green); /* Changed to green for consistency */
-margin-bottom: 10px;
-text-shadow: 0 0 8px rgba(0, 255, 136, 0.5); /* Green glow */
-transition: text-shadow 0.3s ease;
-}
-
-.cta .contact-detail:hover {
-text-shadow: 0 0 15px rgba(0, 255, 136, 0.8), 0 0 25px rgba(0, 255, 136, 0.3); /* Stronger green glow on hover */
-}
-
-.cta .contact-detail:last-of-type { /* Adjust margin for the last contact detail */
-margin-bottom: 30px;
-}
-
-.cta a { /* This styles the main CTA button in the contact section */
-background: var(--green);
-color: var(--black); /* Changed to black for contrast */
-padding: 14px 35px; /* Larger button */
-border-radius: 30px; /* More rounded */
-text-decoration: none;
-font-weight: 700; /* Bolder */
-font-size: 16px; /* Larger font */
-box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-transition: 0.3s ease, transform 0.2s;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-.cta a:hover {
-background: #00cc6d; /* Slightly darker green */
-box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
-transform: translateY(-3px); /* Lift effect */
-}
-
-/* --- Footer --- */
-footer {
-text-align: center;
-padding: 40px; /* More padding */
-background: #050505; /* Slightly lighter than pure black */
-color: #777; /* Brighter */
-font-size: 13px;
-border-top: 1px solid rgba(0, 255, 136, 0.1);
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 1024px) {
-.section {
-padding: 80px 30px;
-}
-.hero-content h2 {
-font-size: 40px;
-letter-spacing: 3px;
-}
-.hero-content p {
-font-size: 17px;
-max-width: 600px;
-}
-.section h3 {
-font-size: 34px;
-margin-bottom: 50px;
-}
-.cards, .feature-grid {
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 30px;
-}
-}
-
-@media (max-width: 768px) {
-header {
-padding: 15px 20px;
-flex-direction: column; /* Stack logo and nav */
-gap: 15px;
-}
-nav {
-width: 100%;
-text-align: center;
-}
-nav a {
-margin: 0 10px; /* Adjust margin for stacked nav */
-}
-header h1 {
-font-size: 22px;
-}
-
-.section {
-  padding: 60px 20px;
-}
-
-.hero-content h2 {
-  font-size: 36px;
-  letter-spacing: 2px;
-}
-
-.hero-content p {
-  font-size: 16px;
-  max-width: 500px;
-}
-
-.section h3 {
-  font-size: 30px;
-  margin-bottom: 40px;
-}
-
-.cards, .feature-grid {
-  grid-template-columns: 1fr;
-  gap: 25px;
-}
-
-.testimonial-slide {
-  padding: 25px;
-}
-.testimonial-slide p {
-  font-size: 16px;
-}
-.testimonials-slider {
-  height: 200px; /* Adjust height for smaller screens */
-}
-
-.stat-item h5 {
-  font-size: 36px;
-}
-
-.feature-item h4 {
-  font-size: 20px;
-}
-.feature-item p, .feature-item ul li {
-  font-size: 14px;
-}
-
-.cta p {
-  font-size: 15px;
-}
-.cta a {
-  padding: 12px 25px;
-  font-size: 15px;
-}
-.cta .contact-detail { /* Adjust for mobile */
-  font-size: 18px;
-}
-.about-button-container .cta-button,
-.section-button-container .cta-button {
-    padding: 12px 25px;
-    font-size: 15px;
-}
-
-}
-
-@media (max-width: 480px) {
-header {
-padding: 10px 15px;
-}
-nav a {
-margin: 0 8px;
-font-size: 14px;
-}
-.hero-content h2 {
-font-size: 28px;
-letter-spacing: 1px;
-}
-.hero-content p {
-font-size: 14px;
-}
-.section h3 {
-font-size: 26px;
-margin-bottom: 30px;
-}
-.card, .feature-item, .stat-item {
-padding: 20px;
-border-radius: 15px;
-}
-.icon-wrapper {
-width: 70px;
-height: 70px;
-margin-bottom: 20px;
-}
-.card img {
-width: 45px;
-height: 45px;
-}
-.card h4 {
-font-size: 18px;
-}
-.card p {
-font-size: 13px;
-}
-.about {
-font-size: 15px;
-}
-.stat-item h5 {
-font-size: 30px;
-}
-.stat-item p {
-font-size: 13px;
-}
-.testimonials-slider {
-height: 180px;
-margin-top: 40px;
-}
-.testimonial-slide p {
-font-size: 14px;
-}
-.testimonial-slide .author {
-font-size: 13px;
-}
-.feature-item h4 {
-font-size: 18px;
-}
-.feature-item p, .feature-item ul li {
-font-size: 13px;
-}
-.feature-item ul li::before {
-font-size: 16px;
-}
-.cta p {
-font-size: 14px;
-}
-.cta a {
-padding: 10px 20px;
-font-size: 14px;
-}
-.cta .contact-detail { /* Adjust for mobile */
-font-size: 16px;
-}
-footer {
-padding: 25px;
-font-size: 11px;
-}
-}
-</style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/></head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Casteel Security | Tactical Protection Redefined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        /* --- Global Variables & Resets --- */
+        :root {
+            --dark-bg: #0C0C0C; /* Near black, but with a hint of depth */
+            --dark-accent: #1A1A1A; /* Slightly lighter for subtle contrast */
+            --primary-green: #00E676; /* Vibrant emerald green for highlights */
+            --secondary-green: #00B25E; /* Slightly darker green for gradients */
+            --text-light: #E0E0E0; /* Bright silver for main text */
+            --text-muted: #A0A0A0; /* Muted silver for secondary text */
+            --border-color: rgba(0, 230, 118, 0.2); /* Soft green border */
+            --glow-light: rgba(0, 230, 118, 0.3); /* Subtle green glow */
+            --glow-strong: rgba(0, 230, 118, 0.6); /* Stronger green glow */
+            --card-gradient-start: rgba(18, 18, 18, 0.9);
+            --card-gradient-end: rgba(8, 8, 8, 0.95);
+            --button-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
+            --button-shadow-hover: 0 12px 30px rgba(0, 230, 118, 0.6);
+            --header-bg: rgba(8, 8, 8, 0.85); /* Slightly transparent for depth */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        body {
+            background-color: var(--dark-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            overflow-x: hidden;
+            background-image: url('https://i.postimg.cc/mD8z4yG8/grid-pattern-dark.png'); /* Subtle grid background */
+            background-size: 150px; /* Adjust grid size */
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            position: relative;
+            line-height: 1.7;
+        }
+        /* Gradient overlay for background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 230, 118, 0.03) 0%, transparent 30%),
+                        radial-gradient(circle at bottom right, rgba(0, 230, 118, 0.03) 0%, transparent 30%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Higher z-index */
+            background-color: var(--header-bg);
+            backdrop-filter: blur(15px); /* Stronger, smoother blur */
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease;
+        }
+        header.scrolled {
+            background-color: rgba(8, 8, 8, 0.95); /* Even darker on scroll */
+            border-bottom-color: rgba(0, 230, 118, 0.4);
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: var(--primary-green);
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            position: relative;
+            text-shadow: 0 0 10px var(--glow-strong);
+        }
+        header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Adjusted position */
+            left: 0;
+            width: 100%;
+            height: 3px; /* Thicker line */
+            background: linear-gradient(90deg, var(--primary-green), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease-out;
+        }
+        header h1:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 30px; /* More spacing */
+            font-weight: 600;
+            font-size: 17px;
+            transition: color 0.3s ease, transform 0.2s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            position: relative;
+            padding: 5px 0; /* For better hover area */
+            white-space: nowrap; /* Prevent text wrapping for nav links */
+        }
+        nav a:nth-child(1) { animation-delay: 0.2s; }
+        nav a:nth-child(2) { animation-delay: 0.4s; }
+        nav a:nth-child(3) { animation-delay: 0.6s; }
+        nav a:nth-child(4) { animation-delay: 0.8s; }
+        nav a:nth-child(5) { animation-delay: 1.0s; }
+        nav a:nth-child(6) { animation-delay: 1.2s; }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%; /* Center the line */
+            transform: translateX(-50%) scaleX(0);
+            width: 80%; /* Shorter, more subtle line */
+            height: 2px;
+            background: var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+        nav a:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        nav a:hover, nav a.active-link { /* Active link styling */
+            color: var(--primary-green);
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px var(--glow-light);
+        }
+        nav a.active-link::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: url('https://i.postimg.cc/X7Q758Bf/IMG-20250711-120122.jpg') center/cover no-repeat; /* Updated image URL */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero::before { /* Dark overlay with subtle gradient */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 2s ease-in-out;
+            max-width: 900px;
+        }
+        .hero-content h2 {
+            font-size: 64px; /* Much larger, impactful */
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-light);
+            text-shadow: 0 0 25px var(--glow-strong), 0 0 10px rgba(0,0,0,0.5); /* Stronger glow and depth */
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            animation: textGlowPulse 3s infinite alternate; /* New: subtle glow pulse */
+            word-wrap: break-word; /* Allow long words to break */
+        }
+        @keyframes textGlowPulse {
+            0% { text-shadow: 0 0 15px var(--glow-light); }
+            100% { text-shadow: 0 0 30px var(--glow-strong), 0 0 15px rgba(0,0,0,0.5); }
+        }
+        .hero-content p {
+            font-size: 20px; /* Larger for readability */
+            color: var(--text-muted);
+            max-width: 750px; /* Wider text */
+            margin: 0 auto 30px auto;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .hero .cta-button {
+            padding: 16px 40px;
+            font-size: 18px;
+            box-shadow: var(--button-shadow);
+        }
+        .hero .cta-button:hover {
+            box-shadow: var(--button-shadow-hover);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotateX(-90deg); }
+            to { opacity: 1; transform: rotateX(0deg); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            padding: 120px 60px; /* More generous padding */
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--dark-bg), var(--dark-accent)); /* Subtle gradient */
+            border-top: 1px solid rgba(0, 230, 118, 0.1); /* Lighter border for separation */
+            margin-top: -1px; /* Overlap with previous section border */
+            z-index: 1;
+        }
+        .section:nth-of-type(even) {
+            background: linear-gradient(180deg, var(--dark-accent), var(--dark-bg));
+        }
+
+        /* Section header with integrated lines */
+        .section h3 {
+            text-align: center;
+            font-size: 44px; /* Larger, more impactful section titles */
+            color: var(--primary-green);
+            margin-bottom: 80px; /* More space */
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            padding-bottom: 25px; /* Space for lines */
+            animation: fadeIn 1.5s ease-out forwards;
+            text-shadow: 0 0 15px var(--glow-strong);
+            word-wrap: break-word; /* Allow long words to break */
+        }
+        .section h3::before, .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary-green), transparent);
+            border-radius: 2px;
+        }
+        .section h3::before {
+            left: 50%;
+            transform: translateX(calc(-100% - 20px)); /* Left line */
+            width: 150px; /* Length of the line */
+        }
+        .section h3::after {
+            right: 50%;
+            transform: translateX(calc(100% + 20px)); /* Right line */
+            width: 150px;
+        }
+
+        /* --- Cards (Services) --- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger cards */
+            gap: 40px; /* More gap */
+        }
+
+        .card {
+            background: linear-gradient(145deg, var(--card-gradient-start), var(--card-gradient-end));
+            border: 1px solid var(--border-color);
+            padding: 40px 30px; /* More padding */
+            border-radius: 25px; /* Larger radius */
+            backdrop-filter: blur(10px); /* Stronger blur */
+            box-shadow: 0 0 20px var(--glow-light);
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth hover */
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            position: relative;
+            overflow: hidden; /* Ensure content inside does not overflow */
+            display: flex; /* Flex for content alignment */
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .card.animate {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 1; /* Override initial opacity for animation */
+            transform: translateY(0) scale(1); /* Override initial transform for animation */
+        }
+        .card:nth-child(even).animate {
+            animation: slideInRight 1s ease-out forwards; /* Alternate animation */
+        }
+
+        .card::before { /* Subtle internal glow border */
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: radial-gradient(circle at center, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
+            border-radius: 25px;
+            filter: blur(20px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.03); /* More pronounced hover */
+            box-shadow: 0 15px 40px var(--glow-strong);
+            border-color: var(--primary-green);
+            z-index: 2; /* Bring to front on hover */
+        }
+
+        .icon-wrapper {
+            background-color: rgba(0, 230, 118, 0.1); /* Stronger tint */
+            border-radius: 50%;
+            width: 100px; /* Larger icon container */
+            height: 100px;
+            min-width: 100px; /* Prevent shrinking */
+            min-height: 100px; /* Prevent shrinking */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid rgba(0, 230, 118, 0.3); /* Thicker border */
+            box-shadow: 0 0 15px var(--glow-light);
+        }
+
+        .card:hover .icon-wrapper {
+            background-color: rgba(0, 230, 118, 0.25);
+            transform: scale(1.1); /* Slight scale on icon wrapper */
+            box-shadow: 0 0 25px var(--glow-strong);
+        }
+
+        .card i { /* Directly target Font Awesome icon */
+            font-size: 55px !important; /* Larger icons */
+            color: var(--primary-green) !important;
+            text-shadow: 0 0 10px var(--glow-strong);
+        }
+
+        .card h4 {
+            margin-bottom: 15px; /* More margin */
+            color: var(--primary-green);
+            font-size: 22px; /* Larger font */
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.8px;
+            text-shadow: 0 0 8px var(--glow-light);
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 16px; /* Slightly larger */
+            line-height: 1.8;
+            flex-grow: 1; /* Allow paragraph to take available space */
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        /* --- About Section --- */
+        .about-content { /* Renamed for clarity */
+            text-align: center;
+            max-width: 1000px; /* Wider text for better flow */
+            margin: auto;
+            color: var(--text-light);
+            font-size: 18px; /* Larger font */
+            line-height: 1.9;
+            opacity: 0;
+            transform: translateY(60px);
+            padding: 0 20px; /* Ensure padding on smaller screens */
+            word-wrap: break-word; /* Allow long words to break */
+        }
+        .about-content.animate {
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .about-button-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* --- CTA Buttons (General Style) --- */
+        .cta-button {
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            color: var(--dark-bg);
+            padding: 15px 40px;
+            border-radius: 35px; /* More rounded */
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 17px;
+            box-shadow: var(--button-shadow);
+            transition: all 0.3s ease, transform 0.2s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            border: none; /* Remove default button border */
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            white-space: nowrap; /* Prevent button text from wrapping unless explicit */
+        }
+        .cta-button::before { /* Hover effect background */
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, var(--secondary-green), var(--primary-green));
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        .cta-button:hover::before {
+            left: 0;
+        }
+        .cta-button:hover {
+            color: var(--dark-bg); /* Ensure text stays dark */
+            box-shadow: var(--button-shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        /* --- Stats Grid --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly larger stats */
+            gap: 35px; /* More gap */
+            margin-top: 80px; /* More margin */
+            text-align: center;
+        }
+
+        .stat-item {
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.9), rgba(15, 15, 15, 0.95)); /* Deeper background */
+            border: 1px solid var(--border-color);
+            padding: 30px; /* More padding */
+            border-radius: 20px; /* Larger radius */
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 25px var(--glow-light); /* More prominent shadow */
+            opacity: 0;
+            transform: scale(0.85) translateY(40px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-item::before { /* Inner glow effect */
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0, 230, 118, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(25px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-item.animate {
+            animation: scaleIn 1s ease-out forwards;
+        }
+
+        .stat-item h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px; /* Larger, more impressive */
+            color: var(--primary-green);
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px var(--glow-strong); /* Stronger glow */
+            position: relative;
+            z-index: 1;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .stat-item p {
+            font-size: 16px; /* Slightly larger */
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        /* --- Testimonials Slider --- */
+        .testimonials-slider {
+            max-width: 900px; /* Wider slider */
+            margin: 90px auto 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px; /* Larger radius */
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 30px var(--glow-light);
+            min-height: 250px; /* Base min-height */
+            transition: height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother height transition */
+            opacity: 0;
+            transform: translateY(60px);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        .testimonials-slider.animate {
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .testimonial-slide {
+            padding: 40px; /* More padding */
+            text-align: center;
+            transition: opacity 0.8s ease-in-out;
+            opacity: 0;
+            position: absolute; /* Keep absolute for stacking effect */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto; /* Allow content to dictate height */
+            min-height: 100%; /* Ensure it fills container for height calc */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box; /* Crucial for internal padding */
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            position: relative; /* Make active slide take up space */
+            animation: fadeIn 1s forwards; /* Added specific fadeIn for active slide */
+        }
+
+        .testimonial-slide p {
+            font-size: 18px; /* Larger font */
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            max-width: 700px;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .testimonial-slide .author {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 16px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px var(--glow-light);
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .slider-dots {
+            text-align: center;
+            margin-top: 30px; /* More margin */
+        }
+
+        .dot {
+            display: inline-block;
+            height: 12px; /* Larger dots */
+            width: 12px;
+            background-color: rgba(255, 255, 255, 0.15); /* Softer */
+            border-radius: 50%;
+            margin: 0 8px; /* More margin */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .dot.active {
+            background-color: var(--primary-green);
+            transform: scale(1.3); /* Scale up active dot */
+            border-color: rgba(0, 230, 118, 0.6);
+            box-shadow: 0 0 10px var(--glow-strong);
+        }
+        .dot:hover {
+            transform: scale(1.1);
+            background-color: rgba(0, 230, 118, 0.5);
+        }
+
+        /* --- Feature Grid (Core Values & Why Choose Us) --- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Consistent with services cards */
+            gap: 40px; /* Consistent gap */
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            background: linear-gradient(145deg, var(--card-gradient-start), var(--card-gradient-end));
+            border: 1px solid var(--border-color);
+            padding: 35px; /* Consistent padding */
+            border-radius: 25px; /* Consistent radius */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px var(--glow-light);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.5s ease;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+            display: flex; /* Flex for content alignment */
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .feature-item.animate {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 1; /* Override initial opacity for animation */
+            transform: translateY(0); /* Override initial transform for animation */
+        }
+        .feature-item:nth-child(even).animate {
+            animation: slideInRight 1s ease-out forwards; /* Alternate animation */
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 35px var(--glow-strong);
+            border-color: var(--primary-green);
+        }
+
+        .feature-item h4 {
+            color: var(--primary-green);
+            font-size: 24px; /* Larger heading */
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px var(--glow-light);
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            flex-grow: 1; /* Allow paragraph to take available space */
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 25px;
+            width: 100%; /* Ensure ul takes full width of parent */
+        }
+
+        .feature-item ul li {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 12px; /* More margin */
+            position: relative;
+            padding-left: 35px; /* More padding */
+            line-height: 1.6;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .feature-item ul li::before {
+            content: '✔'; /* More prominent checkmark */
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
+            font-size: 20px; /* Larger checkmark */
+            font-weight: bold;
+            top: 0px; /* Adjust vertical alignment */
+            text-shadow: 0 0 8px var(--glow-strong);
+        }
+
+        /* --- Section button container --- */
+        .section-button-container {
+            margin-top: 70px; /* Spacing below grid/content */
+            text-align: center;
+        }
+
+        /* --- CTA / Contact --- */
+        .cta-content { /* Renamed for clarity */
+            text-align: center;
+            margin-top: 70px;
+            padding: 0 20px;
+            opacity: 0; /* Animated by JS */
+            transform: translateY(60px);
+            max-width: 900px; /* Constrain width for better readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-content.animate {
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .cta-content p {
+            margin-bottom: 25px; /* More space */
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .cta-content .contact-detail {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            text-shadow: 0 0 12px var(--glow-strong);
+            transition: text-shadow 0.3s ease;
+            letter-spacing: 0.5px;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        .cta-content .contact-detail:hover {
+            text-shadow: 0 0 20px var(--glow-strong), 0 0 35px rgba(0, 230, 118, 0.4);
+        }
+
+        .cta-content .contact-detail:last-of-type {
+            margin-bottom: 40px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 50px; /* More padding */
+            background: #050505; /* Slightly lighter than pure black */
+            color: #666; /* Muted */
+            font-size: 14px;
+            border-top: 1px solid rgba(0, 230, 118, 0.1);
+            letter-spacing: 0.5px;
+            word-wrap: break-word; /* Allow long words to break */
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1200px) {
+            .section {
+                padding: 100px 40px;
+            }
+            .section h3 {
+                font-size: 40px;
+            }
+            .hero-content h2 {
+                font-size: 56px;
+            }
+            .cards, .feature-grid {
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 15px 30px;
+            }
+            header h1 {
+                font-size: 24px;
+            }
+            nav a {
+                margin-left: 20px;
+                font-size: 16px;
+            }
+            .hero-content h2 {
+                font-size: 48px;
+            }
+            .hero-content p {
+                font-size: 18px;
+            }
+            .section {
+                padding: 80px 30px;
+            }
+            .section h3 {
+                font-size: 36px;
+                margin-bottom: 60px;
+            }
+            .section h3::before, .section h3::after {
+                width: 100px; /* Shorter lines */
+            }
+            .cards, .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            .card {
+                padding: 35px 25px;
+            }
+            .icon-wrapper {
+                width: 90px;
+                height: 90px;
+                min-width: 90px; /* Ensure consistency */
+                min-height: 90px;
+            }
+            .card i {
+                font-size: 50px !important;
+            }
+            .card h4 {
+                font-size: 20px;
+            }
+            .card p {
+                font-size: 16px; /* Keep consistent for readability */
+            }
+            .about-content {
+                font-size: 17px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 25px;
+            }
+            .stat-item h5 {
+                font-size: 42px;
+            }
+            .testimonials-slider {
+                max-width: 700px;
+                min-height: 220px;
+            }
+            .testimonial-slide p {
+                font-size: 17px;
+            }
+            .feature-item h4 {
+                font-size: 22px;
+            }
+            .feature-item p, .feature-item ul li {
+                font-size: 15px;
+            }
+            .cta-content p {
+                font-size: 17px;
+            }
+            .cta-content .contact-detail {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            nav {
+                width: 100%;
+                text-align: center;
+                display: flex; /* Ensure nav links stay in a row */
+                flex-wrap: wrap; /* Allow wrapping if too many links */
+                justify-content: center;
+            }
+            nav a {
+                margin: 0 10px 10px 10px; /* Adjust margin for stacked nav */
+            }
+            header h1 {
+                font-size: 22px;
+            }
+            .hero-content h2 {
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .hero .cta-button {
+                white-space: normal; /* Allow button text to wrap on small screens */
+                word-break: break-word;
+            }
+            .section {
+                padding: 70px 25px;
+            }
+            .section h3 {
+                font-size: 32px;
+                margin-bottom: 50px;
+            }
+            .section h3::before, .section h3::after {
+                width: 70px; /* Shorter lines */
+            }
+            .cards, .feature-grid {
+                grid-template-columns: 1fr; /* Single column layout */
+                gap: 25px;
+            }
+            .card, .feature-item, .stat-item {
+                padding: 30px;
+                border-radius: 20px;
+            }
+            .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+                min-height: 80px;
+                margin-bottom: 25px;
+            }
+            .card i {
+                font-size: 45px !important;
+            }
+            .card h4 {
+                font-size: 19px;
+            }
+            .card p {
+                font-size: 15px;
+            }
+            .about-content {
+                font-size: 16px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr; /* Two columns on smaller screens */
+            }
+            .stat-item h5 {
+                font-size: 38px;
+            }
+            .stat-item p {
+                font-size: 14px;
+            }
+            .testimonials-slider {
+                min-height: 200px;
+                margin-top: 60px;
+            }
+            .testimonial-slide {
+                padding: 30px;
+            }
+            .testimonial-slide p {
+                font-size: 15px;
+            }
+            .testimonial-slide .author {
+                font-size: 14px;
+            }
+            .feature-item h4 {
+                font-size: 20px;
+            }
+            .feature-item p, .feature-item ul li {
+                font-size: 15px;
+            }
+            .feature-item ul li::before {
+                font-size: 18px;
+            }
+            .cta-content p {
+                font-size: 15px;
+            }
+            .cta-content .contact-detail {
+                font-size: 18px;
+            }
+            .cta-button {
+                padding: 13px 30px;
+                font-size: 16px;
+            }
+            footer {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+            nav a {
+                margin: 0 5px 8px 5px;
+                font-size: 13px;
+            }
+            header h1 {
+                font-size: 20px;
+            }
+            .hero-content h2 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+            .hero-content p {
+                font-size: 14px;
+            }
+            .hero .cta-button {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
+            .section {
+                padding: 50px 15px;
+            }
+            .section h3 {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+            .section h3::before, .section h3::after {
+                width: 50px; /* Even shorter lines */
+            }
+            .card, .feature-item, .stat-item {
+                padding: 25px;
+            }
+            .icon-wrapper {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
+                min-height: 70px;
+                margin-bottom: 20px;
+            }
+            .card i {
+                font-size: 40px !important;
+            }
+            .card h4 {
+                font-size: 18px;
+            }
+            .card p {
+                font-size: 14px;
+            }
+            .about-content {
+                font-size: 14px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr; /* Single column on smallest screens */
+            }
+            .stat-item h5 {
+                font-size: 32px;
+            }
+            .stat-item p {
+                font-size: 14px;
+            }
+            .testimonials-slider {
+                min-height: 180px;
+                margin-top: 50px;
+                padding: 0 10px;
+            }
+            .testimonial-slide {
+                padding: 20px;
+            }
+            .testimonial-slide p {
+                font-size: 14px;
+            }
+            .testimonial-slide .author {
+                font-size: 13px;
+            }
+            .dot {
+                height: 10px;
+                width: 10px;
+                margin: 0 5px;
+            }
+            .feature-item h4 {
+                font-size: 18px;
+            }
+            .feature-item p, .feature-item ul li {
+                font-size: 14px;
+            }
+            .feature-item ul li::before {
+                font-size: 16px;
+            }
+            .cta-content p {
+                font-size: 14px;
+            }
+            .cta-content .contact-detail {
+                font-size: 16px;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            footer {
+                padding: 30px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
 <body>
-<header>
-<h1>Casteel Security</h1>
-<nav> <a href="#">Home</a> <a href="#services">Services</a> <a href="#about">About Us</a> <a href="#values">Values</a> <a href="#why-choose-us">Why Us</a> <a href="#contact-info">Contact</a>
-</nav>
-</header>
-<section class="hero">
-<div class="hero-content">
-<h2>Professional High-Quality &amp; Reliable Security Services</h2>
-<p>Casteel Security provides exceptional security guarding and protective services to individuals and corporate clients, prioritizing your safety and peace of mind.</p>
-</div>
-</section>
-<section class="section" id="services">
-<h3>What We Offer</h3>
-<div class="cards">
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-shield-halved" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Static Guarding</h4>
-<p>Professional on-site security for homes, businesses, and events, equipped with the latest technology.</p>
-</div>
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-user-shield" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Executive Protection</h4>
-<p>Highly trained and experienced close protection service for individuals and families.</p>
-</div>
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-car" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Mobile Patrol &amp; Patrolling</h4>
-<p>24-hour mobile and foot patrol services across industries for comprehensive safety and rapid response.</p>
-</div>
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-people-group" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Event Security</h4>
-<p>Reliable and discreet security for events of any size, handling crowd control and emergency response.</p>
-</div>
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-search" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Investigations &amp; Audits</h4>
-<p>Professional and meticulous investigations including background checks and security audits.</p>
-</div>
-<div class="card">
-<div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user" style="font-size:40px;color:#00ff88;"></i></div>
-<h4>Security Consultancy</h4>
-<p>Expert security assessments and strategic planning to fortify your defenses and mitigate risks.</p>
-</div>
-</div>
-</section>
-<section class="section" id="about">
-<h3>About Casteel Security</h3>
-<p class="about"> Casteel Security is one of the most professionally managed and licensed security services providers, working with uncompromising skill, efficiency, integrity, and reliability. Our mission is to provide businesses, organizations, and individuals with professional, high-quality, and reliable security services with the highest standards for safety and security solutions. We are committed to providing exceptional guarding and protective services to high net-worth individuals and corporate clients, existing for their safety and peace of mind. </p>
-<div class="about-button-container"> <a class="cta-button" href="#contact-info">Get a Quote</a>
-</div>
-</section>
-<section class="section" id="values">
-<h3>Our Core Values</h3>
-<div class="feature-grid">
-<div class="feature-item">
-<h4>INTEGRITY</h4>
-<p>We do the right thing, maintaining the highest ethical standards in all our operations and interactions.</p>
-</div>
-<div class="feature-item">
-<h4>PERFORMANCE</h4>
-<p>We pursue excellence in everything we do, providing the best performance, celebrating progress, and inspiring trust.</p>
-</div>
-<div class="feature-item">
-<h4>BEST PEOPLE</h4>
-<p>We attract and develop the finest talent for our business, nurturing an environment where people can learn and grow.</p>
-</div>
-<div class="feature-item">
-<h4>CUSTOMER FOCUS</h4>
-<p>We build close, open relationships with our customers, generating trust and working in partnership to achieve mutual benefit.</p>
-</div>
-</div>
-</section>
-<section class="section" id="why-choose-us">
-<h3>Why Choose Casteel Security</h3>
-<div class="feature-grid">
-<div class="feature-item">
-<h4>Uncompromising Quality</h4>
-<p>We are positioned as a leading provider, working with uncompromising skill, efficiency, integrity, and reliability. Our services are tailored to ensure your safety and protection.</p>
-<ul>
-<li>Constant internal and external audits on company processes.</li>
-<li>Regular and innovative processes for improving our standards.</li>
-<li>Exceptional quality of supervision.</li>
-</ul>
-</div>
-<div class="feature-item">
-<h4>Expert &amp; Trained Personnel</h4>
-<p>We provide highly trained and well-supervised guards, equipped with the latest technology and trained in conflict resolution, first aid, fire prevention, and mobile vigil patrolling.</p>
-<ul>
-<li>Experienced, licensed, and trained personnel.</li>
-<li>Ongoing comprehensive training programs.</li>
-<li>Compliance and adherence to local laws and regulations.</li>
-</ul>
-</div>
-<div class="feature-item">
-<h4>Rapid Response &amp; Reliability</h4>
-<p>Our commitment to continuous improvement ensures reliable and prompt action, supported by a 24-hour control room.</p>
-<ul>
-<li>Emergency response to incidents within 15 minutes.</li>
-<li>24 hours a day, 7 days a week operation.</li>
-<li>Strong commitment to professionalism and reliability across all operations.</li>
-</ul>
-</div>
-</div>
-<div class="section-button-container"> <a class="cta-button" href="#contact-info">Get a Quote</a>
-</div>
-</section>
-<section class="section" id="stats">
-<h3>Our Track Record</h3>
-<div class="stats-grid">
-<div class="stat-item">
-<h5>24/7</h5>
-<p>Operation &amp; Support</p>
-</div>
-<div class="stat-item">
-<h5>15min</h5>
-<p>Emergency Response</p>
-</div>
-<div class="stat-item">
-<h5>100%</h5>
-<p>Client Satisfaction Focus</p>
-</div>
-<div class="stat-item">
-<h5>Highly</h5>
-<p>Trained Personnel</p>
-</div>
-</div>
-</section>
-<section class="section" id="testimonials">
-<h3>Client Testimonials</h3>
-<div class="testimonials-slider">
-<div class="testimonial-slide active">
-<p>"Casteel Security's executive protection service is top-notch. Their team is discreet, highly skilled, and provided us with complete peace of mind."</p> <span class="author">- Corporate Client</span>
-</div>
-<div class="testimonial-slide">
-<p>"The static guarding Casteel provides for our premises is excellent. We appreciate their professionalism and constant vigilance."</p> <span class="author">- Business Owner</span>
-</div>
-<div class="testimonial-slide">
-<p>"For our recent event, Casteel Security managed the crowd and access flawlessly. Their planning and execution were outstanding."</p> <span class="author">- Event Organizer</span>
-</div>
-<div class="testimonial-slide">
-<p>"Their night patrolling services have significantly enhanced the security of our industrial complex. Truly reliable."</p> <span class="author">- Industrial Park Manager</span>
-</div>
-<div class="testimonial-slide">
-<p>"The investigative services helped us uncover crucial information professionally and efficiently. Highly recommend Casteel."</p> <span class="author">- Private Client</span>
-</div>
-<div class="testimonial-slide">
-<p>"Casteel Security's rapid response time for mobile patrol is exceptional. They are always on top of any situation."</p> <span class="author">- Residential Association</span>
-</div>
-<div class="testimonial-slide">
-<p>"The best security solution we've experienced. Casteel's commitment to continuous improvement is evident in their services."</p> <span class="author">- Commercial Property Manager</span>
-</div>
-<div class="testimonial-slide">
-<p>"Professional, efficient, and always reliable. Casteel Security truly understands and delivers on security needs."</p> <span class="author">- High Net-Worth Individual</span>
-</div>
-</div>
-<div class="slider-dots"> <span class="dot active" data-slide="0"></span> <span class="dot" data-slide="1"></span> <span class="dot" data-slide="2"></span> <span class="dot" data-slide="3"></span> <span class="dot" data-slide="4"></span> <span class="dot" data-slide="5"></span> <span class="dot" data-slide="6"></span> <span class="dot" data-slide="7"></span>
-</div>
-</section>
-<section class="section" id="contact-info">
-<h3>Contact Us</h3>
-<div class="cta">
-<p>Ready to secure your peace of mind? Reach out to us directly for a consultation tailored to your needs. Our team is available 24/7 to provide expert advice and comprehensive security solutions.</p>
-<p class="contact-detail">Mobile: +254 715 533 765</p>
-<p class="contact-detail">Email: casteellimited@gmail.com</p>
-<p class="contact-detail">P.O. Box: 18618-00100</p> <a href="mailto:casteellimited@gmail.com">Send us an Email</a>
-</div>
-</section>
-<footer>
-    © 2025 Casteel Security. Powered by Trust, Built for Threats.
-  </footer>
-<script>
-  // Intersection Observer for animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2
-  };
-  const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('animate');
-              observer.unobserve(entry.target);
-          }
-      });
-  }, observerOptions);  document.querySelectorAll('.card, .about, .stat-item, .testimonials-slider, #contact-info .cta, .feature-item').forEach(element => {
-observer.observe(element);
-});
+    <header>
+        <h1>Casteel Security</h1>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#services">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="#values">Values</a>
+            <a href="#why-choose-us">Why Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-// Testimonial Slider
-const slides = document.querySelectorAll('.testimonial-slide');
-const dots = document.querySelectorAll('.dot');
-const testimonialsSlider = document.querySelector('.testimonials-slider'); // Get the slider element
-let currentSlide = 0;
-let slideInterval;
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h2>Professional, High-Quality &amp; Reliable Security Services</h2>
+            <p>Casteel Security provides exceptional security guarding and protective services to individuals and corporate clients, prioritizing your safety and peace of mind. We redefine tactical protection.</p>
+            <a href="contact.html" class="cta-button">Get Your Security Quote</a>
+        </div>
+    </section>
 
-function showSlide(index) {
-// Deactivate all first
-slides.forEach(slide => slide.classList.remove('active'));
-dots.forEach(dot => dot.classList.remove('active'));
+    <section class="section" id="services">
+        <h3>What We Offer</h3>
+        <div class="cards">
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4>Static Guarding</h4>
+                <p>Professional on-site security for homes, businesses, and events, equipped with the latest technology.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
+                <h4>Executive Protection</h4>
+                <p>Highly trained and experienced close protection service for individuals and families.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-car"></i></div>
+                <h4>Mobile Patrol &amp; Patrolling</h4>
+                <p>24-hour mobile and foot patrol services across industries for comprehensive safety and rapid response.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-people-group"></i></div>
+                <h4>Event Security</h4>
+                <p>Reliable and discreet security for events of any size, handling crowd control and emergency response.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h4>Investigations &amp; Audits</h4>
+                <p>Professional and meticulous investigations including background checks and security audits.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <h4>Security Consultancy</h4>
+                <p>Expert security assessments and strategic planning to fortify your defenses and mitigate risks.</p>
+            </div>
+        </div>
+    </section>
 
-// Activate current slide and dot
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
+    <section class="section" id="values">
+        <h3>Our Core Values</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h4>INTEGRITY</h4>
+                <p>We uphold the highest ethical standards in every operation, ensuring trust and transparency in all our interactions.</p>
+            </div>
+            <div class="feature-item">
+                <h4>PERFORMANCE</h4>
+                <p>Excellence is our pursuit. We consistently deliver superior performance, celebrate every progress, and inspire unwavering trust.</p>
+            </div>
+            <div class="feature-item">
+                <h4>BEST PEOPLE</h4>
+                <p>We attract, develop, and retain the industry's finest talent, fostering an environment where growth and mastery thrive.</p>
+            </div>
+            <div class="feature-item">
+                <h4>CUSTOMER FOCUS</h4>
+                <p>Building strong, open relationships with our clients is paramount. We partner closely to achieve mutual security and success.</p>
+            </div>
+        </div>
+    </section>
 
-  // Adjust slider height dynamically
-  // Ensure the slide is briefly visible to get its offsetHeight
-  const tempOpacity = slides[index].style.opacity;
-  const tempPosition = slides[index].style.position;
-  slides[index].style.opacity = '1';
-  slides[index].style.position = 'relative';
+    <section class="section" id="why-choose-us">
+        <h3>Why Choose Casteel Security</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h4>Uncompromising Quality</h4>
+                <p>As a leading provider, we operate with unparalleled skill, efficiency, and reliability. Our services are meticulously tailored to guarantee your ultimate safety and protection.</p>
+                <ul>
+                    <li>Constant internal &amp; external audits on company processes.</li>
+                    <li>Regular and innovative processes for enhancing our standards.</li>
+                    <li>Exceptional quality of supervision and oversight.</li>
+                </ul>
+            </div>
+            <div class="feature-item">
+                <h4>Expert &amp; Trained Personnel</h4>
+                <p>Our guards are not just highly trained; they are licensed, equipped with cutting-edge technology, and masters in conflict resolution, first aid, fire prevention, and mobile vigil patrolling.</p>
+                <ul>
+                    <li>Experienced, licensed, and rigorously trained personnel.</li>
+                    <li>Ongoing comprehensive training and skill development programs.</li>
+                    <li>Strict compliance and adherence to all local laws and regulations.</li>
+                </ul>
+            </div>
+            <div class="feature-item">
+                <h4>Rapid Response &amp; Reliability</h4>
+                <p>Our unwavering commitment to continuous improvement ensures reliable and swift action, reinforced by our 24-hour control room, ready for any contingency.</p>
+                <ul>
+                    <li>Emergency response to incidents within 15 minutes.</li>
+                    <li>Full 24 hours a day, 7 days a week operational availability.</li>
+                    <li>Unwavering commitment to professionalism and reliability.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-button-container">
+            <a class="cta-button" href="contact.html">Request a Security Assessment</a>
+        </div>
+    </section>
 
-  const activeSlideHeight = slides[index].offsetHeight;
-  testimonialsSlider.style.height = `${activeSlideHeight + 70}px`; // Add extra padding for better visual
+    <section class="section" id="stats">
+        <h3>Our Track Record</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h5>24/7</h5>
+                <p>Operation &amp; Support</p>
+            </div>
+            <div class="stat-item">
+                <h5>15min</h5>
+                <p>Emergency Response</p>
+            </div>
+            <div class="stat-item">
+                <h5>100%</h5>
+                <p>Client Satisfaction Focus</p>
+            </div>
+            <div class="stat-item">
+                <h5>Highly</h5>
+                <p>Trained Personnel</p>
+            </div>
+        </div>
+    </section>
 
-  // Restore original opacity and position
-  slides[index].style.opacity = tempOpacity;
-  slides[index].style.position = tempPosition;
+    <section class="section" id="testimonials">
+        <h3>Client Testimonials</h3>
+        <div class="testimonials-slider">
+            <div class="testimonial-slide active">
+                <p>"Casteel Security's executive protection service is top-notch. Their team is discreet, highly skilled, and provided us with complete peace of mind, allowing us to focus on our priorities without worry."</p>
+                <span class="author">- Corporate Client</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"The static guarding Casteel provides for our premises is exemplary. We deeply appreciate their unwavering professionalism and constant vigilance, making our site feel truly secure at all times."</p>
+                <span class="author">- Business Owner</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"For our recent major event, Casteel Security managed the crowd and access flawlessly. Their meticulous planning and precise execution were truly outstanding, ensuring a safe and smooth experience for all."</p>
+                <span class="author">- Event Organizer</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"Their night patrolling services have significantly enhanced the security of our industrial complex. The team is consistently reliable and thorough, providing a robust layer of protection we count on."</p>
+                <span class="author">- Industrial Park Manager</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"The investigative services provided by Casteel helped us uncover crucial information professionally and with remarkable efficiency. We highly recommend Casteel for their discreet and effective solutions."</p>
+                <span class="author">- Private Client</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"Casteel Security's rapid response time for mobile patrol is nothing short of exceptional. They are always on top of any situation, providing peace of mind knowing help is moments away."</p>
+                <span class="author">- Residential Association</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"This is by far the best security solution we've experienced. Casteel's commitment to continuous improvement is profoundly evident in every aspect of their services, from planning to execution."</p>
+                <span class="author">- Commercial Property Manager</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"Professional, efficient, and consistently reliable. Casteel Security truly understands and delivers on complex security needs with a level of expertise that instills great confidence."</p>
+                <span class="author">- High Net-Worth Individual</span>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+            <span class="dot" data-slide="6"></span>
+            <span class="dot" data-slide="7"></span>
+        </div>
+    </section>
 
-  // Ensure that the active slide's content dictates the height, even if initially hidden by CSS
-  setTimeout(() => {
-      const recheckHeight = slides[index].offsetHeight;
-      testimonialsSlider.style.height = `${recheckHeight + 70}px`;
-  }, 50); // Small delay to ensure rendering
+    <footer>
+        © 2025 Casteel Security. Powered by Trust, Built for Threats.
+    </footer>
 
-}
+    <script>
+        // --- Intersection Observer for Animations ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Element is animated when 15% visible
+        };
 
-function nextSlide() {
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-}
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
 
-function startSlider() {
-slideInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
-}
+        // Elements to observe for animation (removed .about-content, .cta-content as they'll be on separate pages)
+        document.querySelectorAll('.card, .stat-item, .testimonials-slider, .feature-item').forEach(element => {
+            observer.observe(element);
+        });
 
-function stopSlider() {
-clearInterval(slideInterval);
-}
+        // --- Header Scroll Effect ---
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Add 'scrolled' class after 50px scroll
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-dots.forEach(dot => {
-dot.addEventListener('click', (e) => {
-stopSlider();
-currentSlide = parseInt(e.target.dataset.slide);
-showSlide(currentSlide);
-startSlider();
-});
-});
+        // --- Active Navigation Link on Scroll ---
+        // This script will now only manage active states for *on-page* links.
+        // Links to external pages (like about.html, contact.html) won't have this "active" class logic on the main page.
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
 
-testimonialsSlider.addEventListener('mouseenter', stopSlider);
-testimonialsSlider.addEventListener('mouseleave', startSlider);
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - header.offsetHeight; // Account for fixed header
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-// Initial load and dynamic height adjustment
-window.addEventListener('load', () => {
-showSlide(currentSlide);
-startSlider();
-});
-// Ensure height adjusts on resize
-window.addEventListener('resize', () => {
-showSlide(currentSlide);
-});
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                // Only apply 'active-link' logic for hash links (sections on the same page)
+                if (link.getAttribute('href').startsWith('#') && link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
 
-</script>
-</body></html>
+        // --- Testimonial Slider ---
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.dot');
+        const testimonialsSlider = document.querySelector('.testimonials-slider');
+        let currentSlide = 0;
+        let slideInterval;
+
+        /**
+         * Displays the specified slide and updates the active dot.
+         * Dynamically adjusts the slider's height to match the active slide's content.
+         * @param {number} index - The index of the slide to display.
+         */
+        function showSlide(index) {
+            // Remove 'active' class from all slides and dots
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.position = 'absolute'; // Keep non-active slides absolute
+                slide.style.opacity = '0';
+                slide.style.pointerEvents = 'none'; // Disable interactions on hidden slides
+            });
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Add 'active' class to the current slide and dot
+            if (slides[index]) {
+                slides[index].classList.add('active');
+                slides[index].style.position = 'relative'; // Make active slide relative to take up space
+                slides[index].style.opacity = '1';
+                slides[index].style.pointerEvents = 'auto'; // Enable interactions on active slide
+                dots[index].classList.add('active');
+
+                // Adjust slider height dynamically based on the active slide's content
+                // A slight delay ensures the browser has rendered the slide in its 'active' state
+                setTimeout(() => {
+                    if (slides[index] && testimonialsSlider) {
+                        const activeSlideHeight = slides[index].offsetHeight;
+                        // Add extra padding for better visual spacing within the slider
+                        testimonialsSlider.style.height = `${activeSlideHeight + 80}px`; // Increased padding
+                    }
+                }, 50); // Slightly reduced delay for smoother height transition
+            }
+        }
+
+        /**
+         * Advances to the next slide in the sequence.
+         */
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        /**
+         * Starts the automatic slide transition.
+         */
+        function startSlider() {
+            stopSlider(); // Ensure any existing interval is cleared
+            slideInterval = setInterval(nextSlide, 7000); // Change slide every 7 seconds
+        }
+
+        /**
+         * Stops the automatic slide transition.
+         */
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        // Add click event listeners to dots for manual navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                stopSlider(); // Stop auto-slide on manual interaction
+                currentSlide = parseInt(e.target.dataset.slide);
+                showSlide(currentSlide);
+                startSlider(); // Restart auto-slide after manual interaction
+            });
+        });
+
+        // Pause slider on mouse hover, resume on mouse leave
+        if (testimonialsSlider) {
+            testimonialsSlider.addEventListener('mouseenter', stopSlider);
+            testimonialsSlider.addEventListener('mouseleave', startSlider);
+        }
+
+        // Initialize slider on page load and adjust height on resize
+        window.addEventListener('load', () => {
+            if (slides.length > 0) { // Only run if slides exist
+                showSlide(currentSlide);
+                startSlider();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            // Re-adjust height on window resize to ensure responsiveness
+            if (slides.length > 0) {
+                 showSlide(currentSlide); // Recalculate height for the current slide
+            }
+        });
+    </script>
+</body>
+</html>
+    
