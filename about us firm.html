@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Casteel Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Orbitron:wght@600&amp;family=Urbanist:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* --- Variables and Global Styles --- */
+        :root {
+            --black: #080808; /* Deeper black */
+            --green: #00ff88;
+            --silver: #e0e0e0; /* Brighter silver */
+            --dark-gray: #151515; /* Slightly lighter dark gray for subtle contrast */
+            --card-bg: rgba(18, 18, 18, 0.85); /* Slightly transparent for depth */
+            --card-border: rgba(0, 255, 136, 0.3); /* Softer green border */
+            --card-shadow-light: rgba(0, 255, 136, 0.05);
+            --card-shadow-hover: rgba(0, 255, 136, 0.25); /* Stronger on hover */
+            --gradient-border: linear-gradient(90deg, rgba(0, 255, 136, 0.5) 0%, rgba(0, 255, 136, 0) 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--black);
+            font-family: 'Urbanist', sans-serif;
+            color: var(--silver);
+            overflow-x: hidden;
+            background-image: url('https://i.postimg.cc/kGDnm6w8/black-macro-background-paper-texture-271293-1649.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* --- Header (minimal for standalone page if needed) --- */
+        header {
+            display: flex;
+            justify-content: center; /* Center content for Contact Us page */
+            align-items: center;
+            padding: 18px 40px;
+            position: sticky; /* Sticky header for internal scrolling */
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.25);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            color: var(--green);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+        header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        header h1 a:hover {
+            color: var(--silver);
+        }
+        header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-border);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease-out;
+        }
+        header h1:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: -1px;
+            opacity: 0; /* For animation */
+            transform: translateY(40px); /* For animation */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* For animation */
+        }
+        .section:nth-of-type(even) {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .section.animate {
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .section h3 {
+            text-align: center;
+            font-size: 38px;
+            color: var(--green);
+            margin-bottom: 60px;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--green);
+            border-radius: 2px;
+        }
+
+        /* --- Content Blocks Styling --- */
+        .content-block {
+            max-width: 800px; /* Slightly narrower for contact info */
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px var(--card-shadow-light);
+            transition: all 0.4s ease;
+            text-align: center; /* Center content within the block */
+        }
+        .content-block:hover {
+            box-shadow: 0 12px 35px var(--card-shadow-hover);
+            border-color: var(--green);
+        }
+
+        .content-block h4 {
+            font-size: 26px;
+            color: var(--green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 25px;
+            letter-spacing: 0.8px;
+        }
+
+        .contact-details p {
+            font-size: 18px;
+            color: #d0d0d0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .contact-details strong {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .contact-details a {
+            color: var(--green);
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            font-weight: 600;
+        }
+        .contact-details a:hover {
+            color: var(--silver);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        /* --- Map/Location Section --- */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 40px; /* Space above the map */
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+        .map-container:hover {
+            box-shadow: 0 0 35px rgba(0, 255, 136, 0.5);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Remove default iframe border */
+            border-radius: 20px; /* Match container border-radius */
+        }
+
+        /* --- Call to Action Button --- */
+        .cta-button {
+            display: inline-block;
+            background: var(--green);
+            color: var(--black);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+            transition: 0.3s ease, transform 0.2s;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        .cta-button:hover {
+            background: #00cc6d;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.9), 0 0 60px rgba(0, 255, 136, 0.4);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #050505;
+            color: #777;
+            font-size: 13px;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 80px 30px;
+            }
+            .content-block {
+                padding: 35px;
+            }
+            .content-block h4 {
+                font-size: 24px;
+            }
+            .contact-details p {
+                font-size: 17px;
+            }
+            .cta-button {
+                padding: 13px 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 20px;
+            }
+            .section h3 {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+            .content-block {
+                padding: 30px;
+            }
+            .content-block h4 {
+                font-size: 22px;
+            }
+            .contact-details p {
+                font-size: 16px;
+            }
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 15px;
+                margin-top: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 40px 15px;
+            }
+            .section h3 {
+                font-size: 26px;
+                margin-bottom: 30px;
+            }
+            .content-block {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            .content-block h4 {
+                font-size: 20px;
+            }
+            .contact-details p {
+                font-size: 14px;
+            }
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            footer {
+                padding: 25px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">Casteel Security</a></h1> </header>
+
+    <main>
+        <section class="section" id="contact-intro">
+            <h3>Get in Touch with Casteel Security</h3>
+            <div class="content-block">
+                <p>
+                    Whether you have a query about our services, need a personalized security assessment, or require immediate assistance, our dedicated team is here to help. Reach out to us through the following channels, and we'll ensure a prompt and professional response.
+                </p>
+                <a href="mailto:casteellimited@gmail.com" class="cta-button">Send Us an Email</a>
+            </div>
+        </section>
+
+        <section class="section" id="our-details">
+            <h3>Our Contact Information</h3>
+            <div class="content-block contact-details">
+                <h4>Direct Contacts</h4>
+                <p><strong>Mobile:</strong> <a href="tel:+254715533765">+254 715 533 765</a></p>
+                <p><strong>Email:</strong> <a href="mailto:casteellimited@gmail.com">casteellimited@gmail.com</a></p>
+
+                <h4>Our Location</h4>
+                <p>Palm Tree Villas, Karbasiran Avenue</p>
+                <p>Lavington, Nairobi, Kenya</p>
+                <p><strong>P.O. Box:</strong> 18618-00100</p>
+            </div>
+        </section>
+
+        <section class="section" id="find-us-map">
+            <h3>Find Us on the Map</h3>
+            <div class="content-block">
+                <p>
+                    Visit our offices for a direct consultation or to discuss your security requirements in detail. We look forward to welcoming you.
+                </p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.790938382903!2d36.7583688!3d-1.2963059999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1b4a6f23b2b1%3A0xc4a3d4f8b9d0e1b!2sPalm%20Tree%20Villas!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Casteel Security. All Rights Reserved. Protecting Kenya, 24/7.
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Adjust threshold to trigger earlier or later
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for the fade-in-up animation
+        document.querySelectorAll('main .section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+
+</body></html>
+rved. Powered by Dedication &amp; Vigilance.
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Adjust threshold to trigger earlier or later
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for the fade-in-up animation
+        document.querySelectorAll('main .section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+
+</body></html>
