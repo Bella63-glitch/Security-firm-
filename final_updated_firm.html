@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Casteel Security | Tactical Protection Redefined</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Orbitron:wght@600&amp;family=Urbanist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  /* --- Variables and Global Styles --- */
+  :root {
+    --black: #080808; /* Deeper black */
+    --green: #00ff88;
+    --silver: #e0e0e0; /* Brighter silver */
+    --dark-gray: #151515; /* Slightly lighter dark gray for subtle contrast */
+    --card-bg: rgba(18, 18, 18, 0.85); /* Slightly transparent for depth */
+    --card-border: rgba(0, 255, 136, 0.3); /* Softer green border */
+    --card-shadow-light: rgba(0, 255, 136, 0.05);
+    --card-shadow-hover: rgba(0, 255, 136, 0.25); /* Stronger on hover */
+    --gradient-border: linear-gradient(90deg, rgba(0, 255, 136, 0.5) 0%, rgba(0, 255, 136, 0) 100%);
+    --red-accent: #e60000; /* New: Muted, strong red for alerts/emphasis */
+    --red-shadow: rgba(230, 0, 0, 0.5); /* New: Red shadow for glow effect */
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+background-color: var(--black);
+font-family: 'Urbanist', sans-serif;
+color: var(--silver);
+overflow-x: hidden;
+background-image: url('https://i.postimg.cc/kGDnm6w8/black-macro-background-paper-texture-271293-1649.jpg');
+background-size: cover;
+background-attachment: fixed;
+background-position: center center;
+position: relative;
+line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 18px 40px;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 999;
+background-color: rgba(0, 0, 0, 0.75);
+backdrop-filter: blur(12px); /* Slightly stronger blur */
+border-bottom: 1px solid rgba(0, 255, 136, 0.25); /* Slightly more prominent border */
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+font-family: 'Orbitron', sans-serif;
+font-size: 26px; /* Slightly larger */
+color: var(--green);
+letter-spacing: 1.5px;
+opacity: 0;
+animation: fadeIn 1s ease-out forwards;
+position: relative;
+}
+header h1::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 100%;
+height: 2px;
+background: var(--gradient-border);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.4s ease-out;
+}
+header h1:hover::after {
+transform: scaleX(1);
+}
+
+nav a {
+color: var(--silver);
+text-decoration: none;
+margin-left: 25px; /* More spacing */
+font-weight: 600;
+transition: color 0.3s, transform 0.2s;
+opacity: 0;
+animation: fadeIn 1s ease-out forwards;
+font-size: 16px; /* Slightly larger nav links */
+position: relative;
+}
+nav a:nth-child(1) { animation-delay: 0.2s; }
+nav a:nth-child(2) { animation-delay: 0.4s; }
+nav a:nth-child(3) { animation-delay: 0.6s; }
+nav a:nth-child(4) { animation-delay: 0.8s; }
+nav a:nth-child(5) { animation-delay: 1.0s; }
+nav a:nth-child(6) { animation-delay: 1.2s; }
+
+nav a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 100%;
+height: 2px;
+background: var(--green);
+transform: scaleX(0);
+transform-origin: center;
+transition: transform 0.3s ease-out;
+}
+nav a:hover::after {
+transform: scaleX(1);
+}
+
+nav a:hover {
+color: var(--green);
+transform: translateY(-2px);
+}
+
+/* --- Hero Section --- */
+.hero {
+height: 100vh;
+background: url('https://i.postimg.cc/Z5Kw7CMq/9837e9c940ddf87c06ac2e1ff748ffe5.jpg') center/120% no-repeat;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden; /* For particle effect */
+}
+
+.hero::after {
+content: '';
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0,0,0,0.88); /* Stronger overlay */
+}
+
+.hero-content {
+position: relative;
+text-align: center;
+z-index: 10;
+animation: fadeInUp 2s ease-in-out;
+padding: 0 20px;
+}
+
+.hero-content h2 {
+font-size: 48px; /* Larger, more impactful */
+font-family: 'Archivo Black', sans-serif;
+color: var(--silver);
+text-shadow:
+-2px -2px 0 #000,
+2px -2px 0 #000,
+-2px 2px 0 #000,
+2px 2px 0 #000,
+0 0 15px rgba(0, 255, 136, 0.4); /* Added green glow */
+letter-spacing: 4px; /* More prominent */
+margin-bottom: 20px;
+}
+
+.hero-content p {
+font-size: 18px; /* Larger for readability */
+color: #b0b0b0; /* Slightly darker than silver */
+max-width: 650px; /* Wider text */
+margin-left: auto;
+margin-right: auto;
+text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes scaleIn {
+from { opacity: 0; transform: scale(0.9); }
+to { opacity: 1; transform: scale(1); }
+}
+@keyframes glowPulse {
+0% { box-shadow: 0 0 10px var(--card-shadow-light); }
+50% { box-shadow: 0 0 25px var(--card-shadow-hover); }
+100% { box-shadow: 0 0 10px var(--card-shadow-light); }
+}
+
+/* --- Sections --- */
+.section {
+padding: 100px 40px; /* More generous padding */
+position: relative;
+overflow: hidden;
+background-color: rgba(0, 0, 0, 0.7); /* Subtle overlay for content sections */
+margin-top: -1px; /* Overlap with previous section border */
+}
+.section:nth-of-type(even) {
+background-color: rgba(0, 0, 0, 0.8); /* Alternating background for visual break */
+}
+
+.section h3 {
+text-align: center;
+font-size: 38px; /* Larger, more impactful section titles */
+color: var(--green);
+margin-bottom: 60px; /* More space */
+font-family: 'Orbitron', sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;
+position: relative;
+padding-bottom: 15px;
+animation: fadeInUp 1.5s ease-in-out;
+}
+.section h3::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 80px; /* Shorter line */
+height: 3px;
+background: var(--green);
+border-radius: 2px;
+}
+
+/* --- Cards (Services) --- */
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger cards */
+gap: 35px; /* More gap */
+}
+
+.card {
+background: var(--card-bg);
+border: 1px solid var(--card-border);
+padding: 35px 25px; /* More padding */
+border-radius: 20px; /* Larger radius */
+backdrop-filter: blur(12px); /* Stronger blur */
+box-shadow: 0 0 15px var(--card-shadow-light);
+text-align: center;
+transition: all 0.4s ease;
+opacity: 0;
+transform: translateY(40px);
+position: relative;
+overflow: hidden;
+}
+
+.card::before { /* Subtle diagonal border */
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent 48%, var(--green) 50%, transparent 52%);
+background-size: 200% 200%;
+transform: rotate(0deg);
+opacity: 0;
+transition: opacity 0.5s ease, transform 0.5s ease;
+z-index: 0;
+}
+
+.card:hover::before {
+opacity: 0.05; /* Very subtle glow */
+transform: rotate(15deg);
+}
+
+.card.animate {
+animation: fadeInUp 1s ease-out forwards;
+}
+
+.card:hover {
+transform: translateY(-10px) scale(1.02); /* More pronounced hover */
+box-shadow: 0 12px 35px var(--card-shadow-hover);
+border-color: var(--green);
+z-index: 1; /* Bring to front on hover */
+}
+
+.icon-wrapper {
+background-color: rgba(0, 255, 136, 0.15); /* Stronger tint */
+border-radius: 50%;
+width: 90px; /* Larger */
+height: 90px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 auto 25px auto;
+transition: background-color 0.3s ease, transform 0.3s ease;
+border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.card:hover .icon-wrapper {
+background-color: rgba(0, 255, 136, 0.3);
+transform: scale(1.05); /* Slight scale on icon wrapper */
+}
+
+.card img {
+width: 55px; /* Larger icons */
+height: 55px;
+}
+
+.card h4 {
+margin-bottom: 12px; /* More margin */
+color: var(--green);
+font-size: 20px; /* Larger font */
+font-family: 'Orbitron', sans-serif;
+letter-spacing: 0.5px;
+}
+
+.card p {
+color: #c5c5c5; /* Slightly brighter */
+font-size: 15px; /* Slightly larger */
+line-height: 1.7;
+}
+
+/* --- About Section --- */
+.about {
+text-align: center;
+max-width: 900px; /* Wider text for better flow */
+margin: auto;
+color: #d0d0d0;
+font-size: 17px; /* Larger font */
+line-height: 1.8;
+opacity: 0;
+transform: translateY(40px);
+padding: 0 20px; /* Ensure padding on smaller screens */
+}
+
+.about.animate {
+animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+.about-button-container { /* New: For the button in About Us */
+margin-top: 40px; /* Space between text and button */
+text-align: center;
+}
+
+.about-button-container .cta-button { /* Reusing cta-button style */
+background: var(--green);
+color: var(--black);
+padding: 14px 35px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 700;
+font-size: 16px;
+box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+transition: 0.3s ease, transform 0.2s;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+display: inline-block; /* To allow padding/margin */
+}
+
+.about-button-container .cta-button:hover {
+background: #00cc6d;
+box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+transform: translateY(-3px);
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly larger stats */
+gap: 30px; /* More gap */
+margin-top: 70px; /* More margin */
+text-align: center;
+}
+
+.stat-item {
+background: rgba(255, 255, 255, 0.04); /* More subtle background */
+border: 1px solid rgba(0, 255, 136, 0.2); /* Softer border */
+padding: 25px; /* More padding */
+border-radius: 15px; /* Larger radius */
+backdrop-filter: blur(10px);
+box-shadow: 0 0 20px rgba(0, 255, 136, 0.08); /* More prominent shadow */
+opacity: 0;
+transform: scale(0.9); /* More pronounced initial scale */
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
+}
+.stat-item::before { /* Animated border glow */
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 15px;
+background: var(--gradient-border);
+filter: blur(10px);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 0;
+}
+.stat-item:hover::before {
+opacity: 0.2;
+}
+
+.stat-item.animate {
+animation: scaleIn 1s ease-out forwards;
+}
+
+.stat-item h5 {
+font-family: 'Orbitron', sans-serif;
+font-size: 42px; /* Larger, more impressive */
+color: var(--green);
+margin-bottom: 10px;
+text-shadow: 0 0 12px rgba(0, 255, 136, 0.6); /* Stronger glow */
+position: relative; /* For z-index over glow */
+z-index: 1;
+}
+
+.stat-item p {
+font-size: 15px; /* Slightly larger */
+color: var(--silver);
+position: relative; /* For z-index over glow */
+z-index: 1;
+}
+
+/* --- Testimonials Slider --- */
+.testimonials-slider {
+max-width: 850px; /* Wider slider */
+margin: 80px auto 0 auto;
+position: relative;
+overflow: hidden;
+border-radius: 20px; /* Larger radius */
+background: rgba(255, 255, 255, 0.035); /* Slightly more prominent background */
+border: 1px solid rgba(0, 255, 136, 0.25);
+box-shadow: 0 0 25px rgba(0, 255, 136, 0.1);
+height: 220px; /* Adjusted height */
+opacity: 0;
+transform: translateY(40px);
+padding: 0 20px; /* Ensure padding on smaller screens */
+display: flex; /* Use flex for content centering */
+align-items: center;
+}
+
+.testimonials-slider.animate {
+animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+.testimonial-slide {
+padding: 35px; /* More padding */
+text-align: center;
+transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+opacity: 0;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.testimonial-slide.active {
+opacity: 1;
+position: relative;
+}
+
+.testimonial-slide p {
+font-size: 17px; /* Larger font */
+font-style: italic;
+color: #d5d5d5;
+margin-bottom: 20px;
+line-height: 1.6;
+}
+
+.testimonial-slide .author {
+font-weight: 700; /* Bolder */
+color: var(--green);
+font-size: 15px;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+
+.slider-dots {
+text-align: center;
+margin-top: 25px; /* More margin */
+}
+
+.dot {
+display: inline-block;
+height: 10px; /* Larger dots */
+width: 10px;
+background-color: rgba(255, 255, 255, 0.2); /* Softer */
+border-radius: 50%;
+margin: 0 6px; /* More margin */
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s;
+border: 1px solid transparent;
+}
+
+.dot.active {
+background-color: var(--green);
+transform: scale(1.2); /* Scale up active dot */
+border-color: rgba(0, 255, 136, 0.5);
+}
+.dot:hover {
+transform: scale(1.1);
+}
+
+/* --- Feature Grid (Core Values & Why Choose Us) --- */
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Consistent with services cards */
+gap: 35px; /* Consistent gap */
+margin-top: 50px;
+}
+
+.feature-item {
+background: var(--card-bg);
+border: 1px solid var(--card-border);
+padding: 30px; /* Consistent padding */
+border-radius: 20px; /* Consistent radius */
+backdrop-filter: blur(12px);
+box-shadow: 0 0 15px var(--card-shadow-light);
+text-align: center;
+opacity: 0;
+transform: translateY(40px);
+transition: all 0.4s ease;
+}
+
+.feature-item.animate {
+animation: fadeInUp 1s ease-out forwards;
+}
+
+.feature-item:hover {
+transform: translateY(-8px) scale(1.01);
+box-shadow: 0 8px 25px var(--card-shadow-hover);
+border-color: var(--green);
+}
+
+.feature-item h4 {
+color: var(--green);
+font-size: 22px; /* Larger heading */
+margin-bottom: 15px;
+font-family: 'Orbitron', sans-serif;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+
+.feature-item p {
+color: #c5c5c5;
+font-size: 15px;
+line-height: 1.7;
+}
+
+.feature-item ul {
+list-style: none;
+padding: 0;
+text-align: left;
+margin-top: 20px;
+}
+
+.feature-item ul li {
+color: #d0d0d0;
+font-size: 15px;
+margin-bottom: 10px; /* More margin */
+position: relative;
+padding-left: 28px; /* More padding */
+}
+
+.feature-item ul li::before {
+content: '✔'; /* More prominent checkmark */
+color: var(--green);
+position: absolute;
+left: 0;
+font-size: 18px; /* Larger checkmark */
+font-weight: bold;
+top: -2px; /* Adjust vertical alignment */
+text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+/* --- Section button container --- */
+.section-button-container {
+margin-top: 60px; /* Spacing below grid/content */
+text-align: center;
+}
+
+.section-button-container .cta-button { /* Reusing cta-button style */
+background: var(--green);
+color: var(--black);
+padding: 14px 35px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 700;
+font-size: 16px;
+box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+transition: 0.3s ease, transform 0.2s;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+display: inline-block;
+}
+
+.section-button-container .cta-button:hover {
+background: #00cc6d;
+box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+transform: translateY(-3px);
+}
+
+/* --- CTA / Contact --- */
+.cta {
+text-align: center;
+margin-top: 60px;
+padding: 0 20px;
+}
+
+.cta p {
+margin-bottom: 18px; /* More space */
+font-size: 17px;
+color: #d0d0d0;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* Styles for the contact numbers - NO RED ACCENT */
+.cta .contact-detail {
+font-size: 20px;
+font-weight: bold;
+color: var(--green); /* Changed to green for consistency */
+margin-bottom: 10px;
+text-shadow: 0 0 8px rgba(0, 255, 136, 0.5); /* Green glow */
+transition: text-shadow 0.3s ease;
+}
+
+.cta .contact-detail:hover {
+text-shadow: 0 0 15px rgba(0, 255, 136, 0.8), 0 0 25px rgba(0, 255, 136, 0.3); /* Stronger green glow on hover */
+}
+
+.cta .contact-detail:last-of-type { /* Adjust margin for the last contact detail */
+margin-bottom: 30px;
+}
+
+.cta a { /* This styles the main CTA button in the contact section */
+background: var(--green);
+color: var(--black); /* Changed to black for contrast */
+padding: 14px 35px; /* Larger button */
+border-radius: 30px; /* More rounded */
+text-decoration: none;
+font-weight: 700; /* Bolder */
+font-size: 16px; /* Larger font */
+box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+transition: 0.3s ease, transform 0.2s;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+
+.cta a:hover {
+background: #00cc6d; /* Slightly darker green */
+box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+transform: translateY(-3px); /* Lift effect */
+}
+
+/* --- Footer --- */
+footer {
+text-align: center;
+padding: 40px; /* More padding */
+background: #050505; /* Slightly lighter than pure black */
+color: #777; /* Brighter */
+font-size: 13px;
+border-top: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+.section {
+padding: 80px 30px;
+}
+.hero-content h2 {
+font-size: 40px;
+letter-spacing: 3px;
+}
+.hero-content p {
+font-size: 17px;
+max-width: 600px;
+}
+.section h3 {
+font-size: 34px;
+margin-bottom: 50px;
+}
+.cards, .feature-grid {
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 30px;
+}
+}
+
+@media (max-width: 768px) {
+header {
+padding: 15px 20px;
+flex-direction: column; /* Stack logo and nav */
+gap: 15px;
+}
+nav {
+width: 100%;
+text-align: center;
+}
+nav a {
+margin: 0 10px; /* Adjust margin for stacked nav */
+}
+header h1 {
+font-size: 22px;
+}
+
+.section {
+  padding: 60px 20px;
+}
+
+.hero-content h2 {
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 16px;
+  max-width: 500px;
+}
+
+.section h3 {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.cards, .feature-grid {
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.testimonial-slide {
+  padding: 25px;
+}
+.testimonial-slide p {
+  font-size: 16px;
+}
+.testimonials-slider {
+  height: 200px; /* Adjust height for smaller screens */
+}
+
+.stat-item h5 {
+  font-size: 36px;
+}
+
+.feature-item h4 {
+  font-size: 20px;
+}
+.feature-item p, .feature-item ul li {
+  font-size: 14px;
+}
+
+.cta p {
+  font-size: 15px;
+}
+.cta a {
+  padding: 12px 25px;
+  font-size: 15px;
+}
+.cta .contact-detail { /* Adjust for mobile */
+  font-size: 18px;
+}
+.about-button-container .cta-button,
+.section-button-container .cta-button {
+    padding: 12px 25px;
+    font-size: 15px;
+}
+
+}
+
+@media (max-width: 480px) {
+header {
+padding: 10px 15px;
+}
+nav a {
+margin: 0 8px;
+font-size: 14px;
+}
+.hero-content h2 {
+font-size: 28px;
+letter-spacing: 1px;
+}
+.hero-content p {
+font-size: 14px;
+}
+.section h3 {
+font-size: 26px;
+margin-bottom: 30px;
+}
+.card, .feature-item, .stat-item {
+padding: 20px;
+border-radius: 15px;
+}
+.icon-wrapper {
+width: 70px;
+height: 70px;
+margin-bottom: 20px;
+}
+.card img {
+width: 45px;
+height: 45px;
+}
+.card h4 {
+font-size: 18px;
+}
+.card p {
+font-size: 13px;
+}
+.about {
+font-size: 15px;
+}
+.stat-item h5 {
+font-size: 30px;
+}
+.stat-item p {
+font-size: 13px;
+}
+.testimonials-slider {
+height: 180px;
+margin-top: 40px;
+}
+.testimonial-slide p {
+font-size: 14px;
+}
+.testimonial-slide .author {
+font-size: 13px;
+}
+.feature-item h4 {
+font-size: 18px;
+}
+.feature-item p, .feature-item ul li {
+font-size: 13px;
+}
+.feature-item ul li::before {
+font-size: 16px;
+}
+.cta p {
+font-size: 14px;
+}
+.cta a {
+padding: 10px 20px;
+font-size: 14px;
+}
+.cta .contact-detail { /* Adjust for mobile */
+font-size: 16px;
+}
+footer {
+padding: 25px;
+font-size: 11px;
+}
+}
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/></head>
+<body>
+<header>
+<h1>Casteel Security</h1>
+<nav> <a href="#">Home</a> <a href="#services">Services</a> <a href="#about">About Us</a> <a href="#values">Values</a> <a href="#why-choose-us">Why Us</a> <a href="#contact-info">Contact</a>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-content">
+<h2>Professional High-Quality &amp; Reliable Security Services</h2>
+<p>Casteel Security provides exceptional security guarding and protective services to individuals and corporate clients, prioritizing your safety and peace of mind.</p>
+</div>
+</section>
+<section class="section" id="services">
+<h3>What We Offer</h3>
+<div class="cards">
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-shield-halved" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Static Guarding</h4>
+<p>Professional on-site security for homes, businesses, and events, equipped with the latest technology.</p>
+</div>
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-user-shield" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Executive Protection</h4>
+<p>Highly trained and experienced close protection service for individuals and families.</p>
+</div>
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-car" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Mobile Patrol &amp; Patrolling</h4>
+<p>24-hour mobile and foot patrol services across industries for comprehensive safety and rapid response.</p>
+</div>
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-people-group" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Event Security</h4>
+<p>Reliable and discreet security for events of any size, handling crowd control and emergency response.</p>
+</div>
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-search" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Investigations &amp; Audits</h4>
+<p>Professional and meticulous investigations including background checks and security audits.</p>
+</div>
+<div class="card">
+<div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user" style="font-size:40px;color:#00ff88;"></i></div>
+<h4>Security Consultancy</h4>
+<p>Expert security assessments and strategic planning to fortify your defenses and mitigate risks.</p>
+</div>
+</div>
+</section>
+<section class="section" id="about">
+<h3>About Casteel Security</h3>
+<p class="about"> Casteel Security is one of the most professionally managed and licensed security services providers, working with uncompromising skill, efficiency, integrity, and reliability. Our mission is to provide businesses, organizations, and individuals with professional, high-quality, and reliable security services with the highest standards for safety and security solutions. We are committed to providing exceptional guarding and protective services to high net-worth individuals and corporate clients, existing for their safety and peace of mind. </p>
+<div class="about-button-container"> <a class="cta-button" href="#contact-info">Get a Quote</a>
+</div>
+</section>
+<section class="section" id="values">
+<h3>Our Core Values</h3>
+<div class="feature-grid">
+<div class="feature-item">
+<h4>INTEGRITY</h4>
+<p>We do the right thing, maintaining the highest ethical standards in all our operations and interactions.</p>
+</div>
+<div class="feature-item">
+<h4>PERFORMANCE</h4>
+<p>We pursue excellence in everything we do, providing the best performance, celebrating progress, and inspiring trust.</p>
+</div>
+<div class="feature-item">
+<h4>BEST PEOPLE</h4>
+<p>We attract and develop the finest talent for our business, nurturing an environment where people can learn and grow.</p>
+</div>
+<div class="feature-item">
+<h4>CUSTOMER FOCUS</h4>
+<p>We build close, open relationships with our customers, generating trust and working in partnership to achieve mutual benefit.</p>
+</div>
+</div>
+</section>
+<section class="section" id="why-choose-us">
+<h3>Why Choose Casteel Security</h3>
+<div class="feature-grid">
+<div class="feature-item">
+<h4>Uncompromising Quality</h4>
+<p>We are positioned as a leading provider, working with uncompromising skill, efficiency, integrity, and reliability. Our services are tailored to ensure your safety and protection.</p>
+<ul>
+<li>Constant internal and external audits on company processes.</li>
+<li>Regular and innovative processes for improving our standards.</li>
+<li>Exceptional quality of supervision.</li>
+</ul>
+</div>
+<div class="feature-item">
+<h4>Expert &amp; Trained Personnel</h4>
+<p>We provide highly trained and well-supervised guards, equipped with the latest technology and trained in conflict resolution, first aid, fire prevention, and mobile vigil patrolling.</p>
+<ul>
+<li>Experienced, licensed, and trained personnel.</li>
+<li>Ongoing comprehensive training programs.</li>
+<li>Compliance and adherence to local laws and regulations.</li>
+</ul>
+</div>
+<div class="feature-item">
+<h4>Rapid Response &amp; Reliability</h4>
+<p>Our commitment to continuous improvement ensures reliable and prompt action, supported by a 24-hour control room.</p>
+<ul>
+<li>Emergency response to incidents within 15 minutes.</li>
+<li>24 hours a day, 7 days a week operation.</li>
+<li>Strong commitment to professionalism and reliability across all operations.</li>
+</ul>
+</div>
+</div>
+<div class="section-button-container"> <a class="cta-button" href="#contact-info">Get a Quote</a>
+</div>
+</section>
+<section class="section" id="stats">
+<h3>Our Track Record</h3>
+<div class="stats-grid">
+<div class="stat-item">
+<h5>24/7</h5>
+<p>Operation &amp; Support</p>
+</div>
+<div class="stat-item">
+<h5>15min</h5>
+<p>Emergency Response</p>
+</div>
+<div class="stat-item">
+<h5>100%</h5>
+<p>Client Satisfaction Focus</p>
+</div>
+<div class="stat-item">
+<h5>Highly</h5>
+<p>Trained Personnel</p>
+</div>
+</div>
+</section>
+<section class="section" id="testimonials">
+<h3>Client Testimonials</h3>
+<div class="testimonials-slider">
+<div class="testimonial-slide active">
+<p>"Casteel Security's executive protection service is top-notch. Their team is discreet, highly skilled, and provided us with complete peace of mind."</p> <span class="author">- Corporate Client</span>
+</div>
+<div class="testimonial-slide">
+<p>"The static guarding Casteel provides for our premises is excellent. We appreciate their professionalism and constant vigilance."</p> <span class="author">- Business Owner</span>
+</div>
+<div class="testimonial-slide">
+<p>"For our recent event, Casteel Security managed the crowd and access flawlessly. Their planning and execution were outstanding."</p> <span class="author">- Event Organizer</span>
+</div>
+<div class="testimonial-slide">
+<p>"Their night patrolling services have significantly enhanced the security of our industrial complex. Truly reliable."</p> <span class="author">- Industrial Park Manager</span>
+</div>
+<div class="testimonial-slide">
+<p>"The investigative services helped us uncover crucial information professionally and efficiently. Highly recommend Casteel."</p> <span class="author">- Private Client</span>
+</div>
+<div class="testimonial-slide">
+<p>"Casteel Security's rapid response time for mobile patrol is exceptional. They are always on top of any situation."</p> <span class="author">- Residential Association</span>
+</div>
+<div class="testimonial-slide">
+<p>"The best security solution we've experienced. Casteel's commitment to continuous improvement is evident in their services."</p> <span class="author">- Commercial Property Manager</span>
+</div>
+<div class="testimonial-slide">
+<p>"Professional, efficient, and always reliable. Casteel Security truly understands and delivers on security needs."</p> <span class="author">- High Net-Worth Individual</span>
+</div>
+</div>
+<div class="slider-dots"> <span class="dot active" data-slide="0"></span> <span class="dot" data-slide="1"></span> <span class="dot" data-slide="2"></span> <span class="dot" data-slide="3"></span> <span class="dot" data-slide="4"></span> <span class="dot" data-slide="5"></span> <span class="dot" data-slide="6"></span> <span class="dot" data-slide="7"></span>
+</div>
+</section>
+<section class="section" id="contact-info">
+<h3>Contact Us</h3>
+<div class="cta">
+<p>Ready to secure your peace of mind? Reach out to us directly for a consultation tailored to your needs. Our team is available 24/7 to provide expert advice and comprehensive security solutions.</p>
+<p class="contact-detail">Mobile: +254 715 533 765</p>
+<p class="contact-detail">Email: casteellimited@gmail.com</p>
+<p class="contact-detail">P.O. Box: 18618-00100</p> <a href="mailto:casteellimited@gmail.com">Send us an Email</a>
+</div>
+</section>
+<footer>
+    © 2025 Casteel Security. Powered by Trust, Built for Threats.
+  </footer>
+<script>
+  // Intersection Observer for animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+  };
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+              observer.unobserve(entry.target);
+          }
+      });
+  }, observerOptions);  document.querySelectorAll('.card, .about, .stat-item, .testimonials-slider, #contact-info .cta, .feature-item').forEach(element => {
+observer.observe(element);
+});
+
+// Testimonial Slider
+const slides = document.querySelectorAll('.testimonial-slide');
+const dots = document.querySelectorAll('.dot');
+const testimonialsSlider = document.querySelector('.testimonials-slider'); // Get the slider element
+let currentSlide = 0;
+let slideInterval;
+
+function showSlide(index) {
+// Deactivate all first
+slides.forEach(slide => slide.classList.remove('active'));
+dots.forEach(dot => dot.classList.remove('active'));
+
+// Activate current slide and dot
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+
+  // Adjust slider height dynamically
+  // Ensure the slide is briefly visible to get its offsetHeight
+  const tempOpacity = slides[index].style.opacity;
+  const tempPosition = slides[index].style.position;
+  slides[index].style.opacity = '1';
+  slides[index].style.position = 'relative';
+
+  const activeSlideHeight = slides[index].offsetHeight;
+  testimonialsSlider.style.height = `${activeSlideHeight + 70}px`; // Add extra padding for better visual
+
+  // Restore original opacity and position
+  slides[index].style.opacity = tempOpacity;
+  slides[index].style.position = tempPosition;
+
+  // Ensure that the active slide's content dictates the height, even if initially hidden by CSS
+  setTimeout(() => {
+      const recheckHeight = slides[index].offsetHeight;
+      testimonialsSlider.style.height = `${recheckHeight + 70}px`;
+  }, 50); // Small delay to ensure rendering
+
+}
+
+function nextSlide() {
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+}
+
+function startSlider() {
+slideInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+}
+
+function stopSlider() {
+clearInterval(slideInterval);
+}
+
+dots.forEach(dot => {
+dot.addEventListener('click', (e) => {
+stopSlider();
+currentSlide = parseInt(e.target.dataset.slide);
+showSlide(currentSlide);
+startSlider();
+});
+});
+
+testimonialsSlider.addEventListener('mouseenter', stopSlider);
+testimonialsSlider.addEventListener('mouseleave', startSlider);
+
+// Initial load and dynamic height adjustment
+window.addEventListener('load', () => {
+showSlide(currentSlide);
+startSlider();
+});
+// Ensure height adjusts on resize
+window.addEventListener('resize', () => {
+showSlide(currentSlide);
+});
+
+</script>
+</body></html>
